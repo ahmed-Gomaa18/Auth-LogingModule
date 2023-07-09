@@ -28,3 +28,61 @@
 2023-07-06 06:09:39 error: @Method:(get) @Endpoint:(/resendConfrimEmail/:userId) @FunName:(resendConfrimEmail) - You already confirmed Please proceed to login Page.
 2023-07-06 06:12:28 error: @Method:(get) @Endpoint:(/resendConfrimEmail/:userId) @FunName:(resendConfrimEmail) - You already confirmed Please proceed to login Page.
 2023-07-06 06:13:52 error: @Method:(get) @Endpoint:(/resendConfrimEmail/:userId) @FunName:(resendConfrimEmail) - This User id: (64a62da92fda6d2ce277b1f1) You already confirmed Please proceed to login Page.
+2023-07-06 14:47:10 info: @Method:(post) @Endpoint:(/register) @FunName:(Register) - This User id: (64a6a9be5612519357f1657a) email: (ahmedgomaa8998@gmail.com) Created Successfully.
+2023-07-06 14:49:10 error: This User id: (64a6a9be5612519357f1657a) email: (ahmedgomaa8998@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-07-06 14:50:46 info: @Method:(post) @Endpoint:(/register) @FunName:(Register) - This User id: (64a6aa9610c4c579bce0282c) email: (ahmedgomaa8998@gmail.com) Created Successfully.
+2023-07-06 14:50:49 info: This User email: (ahmedgomaa8998@gmail.com) was been sent Successfully.
+2023-07-06 14:51:37 info: @Method:(get) @Endpoint:(/confrimEmail/:token) @FunName:(confrimEmail) - This User id: (64a6aa9610c4c579bce0282c) Confirmed Email Successfully.
+2023-07-06 14:54:04 error: @Method:(get) @Endpoint:(/resendConfrimEmail/:userId) @FunName:(resendConfrimEmail) - This User id: (64a6aa9610c4c579bce0282c) You already confirmed Please proceed to login Page.
+2023-07-06 14:54:30 info: @Method:(get) @Endpoint:(/resendConfrimEmail/:userId) @FunName:(resendConfrimEmail) - This User id: (64a6aa9610c4c579bce0282c) Resend Confirmed Email Successfully.
+2023-07-06 14:54:32 info: This User email: (ahmedgomaa8998@gmail.com) was been sent Successfully.
+2023-07-06 14:56:09 info: @Method:(get) @Endpoint:(/confrimEmail/:token) @FunName:(confrimEmail) - This User id: (64a6aa9610c4c579bce0282c) Confirmed Email Successfully.
+2023-07-06 15:02:51 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - Please confrim your Email first.
+2023-07-06 15:06:40 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - Please confrim your Email first.
+2023-07-06 15:06:55 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - Error Occurred While This User Try to LogIn email:(ahmedgomaa8998@gmail.com) Error: Illegal arguments: string, undefined. 
+2023-07-06 15:09:13 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - Error Occurred While This User Try to LogIn email:(ahmedgomaa8998@gmail.com) Error: Illegal arguments: string, undefined. 
+2023-07-06 15:10:18 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - Error Occurred While This User Try to LogIn email:(ahmedgomaa8998@gmail.com) Error: Illegal arguments: string, undefined. 
+2023-07-06 15:19:12 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - User Login Successfully.
+2023-07-06 15:23:00 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - You are Already Login.
+2023-07-06 15:23:11 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - User Login Successfully.
+2023-07-06 15:24:38 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - User Login Successfully.
+2023-07-06 15:28:56 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-vaild Email OR Password.
+2023-07-06 15:29:33 info: @Method:(post) @Endpoint:(/register) @FunName:(Register) - This User id: (64a6b3ad40aa43c2bf84e818) email: (ahmedgomaa8998@gmail.com) Created Successfully.
+2023-07-06 15:29:36 info: This User email: (ahmedgomaa8998@gmail.com) was been sent Successfully.
+2023-07-06 15:29:54 info: @Method:(get) @Endpoint:(/confrimEmail/:token) @FunName:(confrimEmail) - This User id: (64a6b3ad40aa43c2bf84e818) Confirmed Email Successfully.
+2023-07-06 15:30:47 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - User Login Successfully.
+2023-07-06 15:32:12 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - You are Already Login.
+2023-07-06 15:42:46 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64a6b3ad40aa43c2bf84e818) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-07 10:20:09 info: @Method:(patch) @Endpoint:(/logout) @FunName:(<anonymous>) - This User id: (64a6b3ad40aa43c2bf84e818) email: (ahmedgomaa8998@gmail.com) Logout Successfully.
+2023-07-07 10:24:36 info: @Method:(patch) @Endpoint:(/logout) @FunName:(<anonymous>) - This User id: (64a6b3ad40aa43c2bf84e818) email: (ahmedgomaa8998@gmail.com) Logout Successfully.
+2023-07-09 11:38:57 info: @Method:(post) @Endpoint:(/requestPasswordReset) @FunName:(requestResetPassword) - This User id: (undefined) email: (ahmedgomaa8998@gmail.com) Want To Reset Password.
+2023-07-09 11:40:58 error: This User id: (undefined) email: (ahmedgomaa8998@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-07-09 12:05:06 info: @Method:(post) @Endpoint:(/register) @FunName:(Register) - This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) Created Successfully.
+2023-07-09 12:07:06 error: This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-07-09 12:08:29 info: @Method:(get) @Endpoint:(/resendConfrimEmail/:userId) @FunName:(resendConfrimEmail) - This User id: (64aa7842a97ef82671d2267d) Resend Confirmed Email Successfully.
+2023-07-09 12:10:56 info: @Method:(get) @Endpoint:(/resendConfrimEmail/:userId) @FunName:(resendConfrimEmail) - This User id: (64aa7842a97ef82671d2267d) Resend Confirmed Email Successfully.
+2023-07-09 12:11:51 error: This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-07-09 12:15:23 info: @Method:(get) @Endpoint:(/resendConfrimEmail/:userId) @FunName:(resendConfrimEmail) - This User id: (64aa7842a97ef82671d2267d) Resend Confirmed Email Successfully.
+2023-07-09 12:17:23 error: This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-07-09 12:22:00 info: @Method:(get) @Endpoint:(/resendConfrimEmail/:userId) @FunName:(resendConfrimEmail) - This User id: (64aa7842a97ef82671d2267d) Resend Confirmed Email Successfully.
+2023-07-09 12:22:10 error: This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-07-09 12:28:56 info: @Method:(get) @Endpoint:(/resendConfrimEmail/:userId) @FunName:(resendConfrimEmail) - This User id: (64aa7842a97ef82671d2267d) Resend Confirmed Email Successfully.
+2023-07-09 12:28:56 error: This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-07-09 12:29:42 info: @Method:(get) @Endpoint:(/resendConfrimEmail/:userId) @FunName:(resendConfrimEmail) - This User id: (64aa7842a97ef82671d2267d) Resend Confirmed Email Successfully.
+2023-07-09 12:29:44 info: This User email: (ahmedgomaa8998@gmail.com) was been sent Successfully.
+2023-07-09 12:36:02 info: @Method:(get) @Endpoint:(/confrimEmail/:token) @FunName:(confrimEmail) - This User id: (64aa7842a97ef82671d2267d) Confirmed Email Successfully.
+2023-07-09 12:36:56 info: @Method:(post) @Endpoint:(/requestPasswordReset) @FunName:(requestResetPassword) - This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) Want To Reset Password.
+2023-07-09 12:36:58 info: This User email: (ahmedgomaa8998@gmail.com) was been sent Successfully.
+2023-07-09 13:25:13 error: @Method:(post) @Endpoint:(/passwordReset) @FunName:(resetPasswordController) - This User id: (64aa7842a97ef82671d2267d) Invalid or expired password reset token.
+2023-07-09 13:28:03 error: @Method:(post) @Endpoint:(/passwordReset) @FunName:(resetPasswordController) - This User id: (64aa7842a97ef82671d2267d) Invalid or expired password reset token.
+2023-07-09 13:31:09 info: @Method:(post) @Endpoint:(/passwordReset) @FunName:(resetPasswordController) - This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) Reset Password Successfully.
+2023-07-09 13:31:12 info: This User email: (ahmedgomaa8998@gmail.com) was been sent Successfully.
+2023-07-09 13:31:37 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-09 13:32:09 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - You are Already Login.
+2023-07-09 13:34:57 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-09 13:37:26 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-09 13:38:23 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-09 13:38:59 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-09 13:42:32 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-09 13:44:01 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-09 13:44:49 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.

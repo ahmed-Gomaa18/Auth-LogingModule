@@ -1,7 +1,8 @@
-import Iuser from "Interfaces/userInterface";
+import Iuser from "Interfaces/user.interface";
 
-declare namespace Express {
+//import Express, { Request } from 'express';
 
+declare module 'express-serve-static-core'{
     export interface Request {
         user: Iuser,
     }

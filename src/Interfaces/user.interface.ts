@@ -3,6 +3,7 @@ export default interface Iuser{
     userId?: string,
     user_fname?: string,
     user_lname?: string,
-    user_role? : Array<any>,
-    user_permission? : Array<any>,
+    user_role? : Array<string>,
+    user_permission? : Array<string>,
+    auth? : boolean
 }

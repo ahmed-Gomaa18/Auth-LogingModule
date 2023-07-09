@@ -30,7 +30,7 @@ const transports = [
     }),
     new winston.transports.File({ filename: 'Logs/info.log'}),
     
-    new winston.transports.File({ filename: 'Logs/warn.log', level: 'warn' }),
+    //new winston.transports.File({ filename: 'Logs/warn.log', level: 'warn' }),
 ]
 
 const Logger = winston.createLogger({
