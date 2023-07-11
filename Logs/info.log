@@ -145,3 +145,4 @@ error stack: ValidationError: user validation failed: firstName: Path `firstName
     at /home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/mongoose/lib/document.js:2940:17
     at /home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/mongoose/lib/schematype.js:1352:9
     at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2023-07-11 14:12:43 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.

@@ -2,7 +2,7 @@ import mongoose, {Schema, Document} from "mongoose";
 import bcrypt, {compare} from 'bcryptjs';
 
 // Define User Interface Schema
-interface User extends Document{
+export interface UserInterface extends Document{
     firstName: string;
     lastName: string;
     email: string;
@@ -20,7 +20,7 @@ interface User extends Document{
 }
 
 // Define Schema
-const userSchema: Schema<User> = new mongoose.Schema({
+const userSchema: Schema<UserInterface> = new mongoose.Schema({
     firstName: {
         type: String, 
         required: true
@@ -101,4 +101,4 @@ userSchema.methods.checkPasswordIsValid = async function (password: string) : Pr
 // });
 
 // Create UserModel
-export const UserModel = mongoose.model<User>("user", userSchema);
+export const UserModel = mongoose.model<UserInterface>("user", userSchema);

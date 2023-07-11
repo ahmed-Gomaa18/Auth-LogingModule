@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import {UserModel as User} from '../Models/user.model';
+import {UserModel as User, UserInterface} from '../Models/user.model';
 import { UserSessionModel as UserSession } from '../Models/userSession.model';
 
 import {sign as jwtSign, verify as jwtVerify} from 'jsonwebtoken';
@@ -16,6 +16,7 @@ import moment from 'moment';
 
 import Token from '../Models/tokenResetPassword.model';
 import { calculateExpirationDate } from '../Config/calculateExpirationDate';
+import { promises } from 'dns';
 
 
 
@@ -129,18 +130,12 @@ export async function signIn(email: string, password: string, rememberMe: boolea
                         if(rememberMe){
                             expiresIn = '7d';
                         }
-                        
+                        // Function
                         // Login Logic
                         const token_id = uuidv4();
+                        const ResUserSessionToken = await createUserSession(token_id, user, expiresIn);
     
-                        const token = await jwtSign({id:user._id , role:user.role, permission: user.permission, token_id: token_id} , process.env.TOKEN_SIGNATURE , {expiresIn});
-    
-                        const expire_date = calculateExpirationDate(expiresIn);
-    
-                        const newUserSession = await new UserSession({user_id: user._id, token_id: token_id, expire_date: expire_date});
-                        const savedUserSession = await newUserSession.save();
-    
-                        if(!savedUserSession){
+                        if(ResUserSessionToken == "Faild"){
                             return {
                                 isSuccess:false, 
                                 message:'Oops, Occurred a problem While login. Please Try Login again.',
@@ -153,7 +148,7 @@ export async function signIn(email: string, password: string, rememberMe: boolea
                             message:'User Login Successfully.',
                             status: 200,
                             user: user,
-                            Token: token
+                            Token: ResUserSessionToken
                         }
     
                         
@@ -279,7 +274,7 @@ export async function signOut(userId: string, tokent_id: string){
 
         return{
             isSuccess:false, 
-            message:'Sorry, Please try to Logout agian.',
+            message:'Sorry, Please try to Logout Again.',
             status: 401,
         }
     }
@@ -413,4 +408,21 @@ export async function resetPassword(userId: string, token: string, password: str
         user: user
     };
 
+}
+
+export async function createUserSession(token_id: string, user: UserInterface, expiresIn: string): Promise<string>{
+    
+    const token: string = await jwtSign({id:user._id , role:user.role, permission: user.permission, token_id: token_id} , process.env.TOKEN_SIGNATURE , {expiresIn});
+
+    const expire_date = calculateExpirationDate(expiresIn);
+
+    const newUserSession = await new UserSession({user_id: user._id, token_id: token_id, expire_date: expire_date});
+    const savedUserSession = await newUserSession.save();
+    if (!savedUserSession){
+        return "Faild";
+    }
+    else
+    {
+        return token;
+    }
 }

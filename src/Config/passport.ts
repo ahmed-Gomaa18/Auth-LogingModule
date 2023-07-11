@@ -5,6 +5,8 @@ import { UserModel as User } from "../Models/user.model";
 import {generatePasswordFun} from './genratePassword';
 import {sign as jwtSign} from 'jsonwebtoken';
 import { Strategy as FacebookStrategy } from 'passport-facebook';
+import { v4 as uuidv4 } from 'uuid';
+import {createUserSession} from '../Services/auth.service';
 
 
 // Google
@@ -41,8 +43,13 @@ passport.use(new Strategy(AUTH_OPTIONS, async (accessToken, refreshToken, profil
       
     }
     // JWT Token
-    token = await jwtSign({id:user._id , role:user.role, permission: user.permission} , process.env.TOKEN_SIGNATURE , {expiresIn : '7d'});
+    //token = await jwtSign({id:user._id , role:user.role, permission: user.permission} , process.env.TOKEN_SIGNATURE , {expiresIn : '7d'});
   
+    // createUserSession Fun Create Session and Return Token
+    const token_id = uuidv4();
+    const expiresIn = '7d';
+    const sessionToken = await createUserSession(token_id, user, expiresIn);
+    token = sessionToken
     return done(null, token, user);
 
   } catch (err) {
@@ -93,8 +100,14 @@ passport.use(new FacebookStrategy(FACEBOOK_OPTIONS, async (accessToken, refreshT
       
     }
     // JWT Token
-    token = await jwtSign({id:user._id , role:user.role, permission: user.permission} , process.env.TOKEN_SIGNATURE , {expiresIn : '7d'});
+    //token = await jwtSign({id:user._id , role:user.role, permission: user.permission} , process.env.TOKEN_SIGNATURE , {expiresIn : '7d'});
   
+    // createUserSession Fun Create Session and Return Token
+    const token_id = uuidv4();
+    const expiresIn = '7d';
+    const sessionToken = await createUserSession(token_id, user, expiresIn);
+    token = sessionToken
+
     return done(null, token, user);
 
   } catch (err) {
