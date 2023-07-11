@@ -10,7 +10,7 @@ import passport from './Config/passport';
 import {connect as connectToDB} from './DB/connect.db';
 
 import { authRouter } from './Routes/auth.router';
-import { googleRouter } from './Routes/google.router';
+import { thirdPartyRouter } from './Routes/thirdPartyCallback.route';
 import { collectEndpoints } from './Utils/getEndpoints';
 import defaultErrorHandler from './Utils/defaultErrorHandler';
 
@@ -52,8 +52,8 @@ process.on("unhandledRejection", (exception)=>{
     // process.exit(1);
 });
 
-// Callback Google
-app.use('/auth', googleRouter);
+// Callback Third Party
+app.use('/auth', thirdPartyRouter);
 
 // Router
 app.use('/api/v1/auth', authRouter);

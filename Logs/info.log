@@ -139,3 +139,9 @@ error stack: InternalOAuthError: Failed to fetch user profile
 2023-07-10 18:49:41 info: @Method:(patch) @Endpoint:(/logout) @FunName:(<anonymous>) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) Logout Successfully.
 2023-07-10 18:50:10 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
 2023-07-10 18:50:49 info: @Method:(patch) @Endpoint:(/logout) @FunName:(<anonymous>) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) Logout Successfully.
+2023-07-11 11:02:02 error: error: ValidationError: firstName: Path `firstName` is required., lastName: Path `lastName` is required. 
+error stack: ValidationError: user validation failed: firstName: Path `firstName` is required., lastName: Path `lastName` is required.
+    at model.Document.invalidate (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/mongoose/lib/document.js:3147:32)
+    at /home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/mongoose/lib/document.js:2940:17
+    at /home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/mongoose/lib/schematype.js:1352:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)

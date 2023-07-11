@@ -157,13 +157,13 @@ export async function Logout(req: Request, res: Response) {
 }
 
 // Auth By Google
-export function httpLogin(req: Request, res: Response, next: NextFunction) {
+export function httpLoginByGoogle(req: Request, res: Response, next: NextFunction) {
     passport.authenticate("google", {
         scope: ["email", "profile"],
     })(req, res, next);
 }
 
-export function httpCallbackURL(req: Request, res: Response, next: NextFunction) {
+export function httpCallbackGoogleURL(req: Request, res: Response, next: NextFunction) {
     passport.authenticate("google", { session: true }, (err, token, user) => {
         if (err) {
             return next(err);
@@ -171,7 +171,30 @@ export function httpCallbackURL(req: Request, res: Response, next: NextFunction)
 
         res.cookie('Token', token);
         // res.setHeader('Authorization', `Bearer ${token}`);
-        res.redirect("https://www.google.com.eg/?hl=ar");
+        res.redirect("http://localhost:3001");
+
+        //res.status(201).json({ message: 'User Auth By Google Successfully.', token, user: user });
+
+    })(req, res, next);
+}
+
+
+// Auth By Facebook
+export function httpLoginByFacebook(req: Request, res: Response, next: NextFunction) {
+    passport.authenticate("facebook", {
+        scope: ["email"],
+    })(req, res, next);
+}
+
+export function httpCallbackFacebookURL(req: Request, res: Response, next: NextFunction) {
+    passport.authenticate("facebook", { session: true }, (err, token, user) => {
+        if (err) {
+            return next(err);
+        }
+
+        res.cookie('Token', token);
+        // res.setHeader('Authorization', `Bearer ${token}`);
+        res.redirect("http://localhost:3001");
 
         //res.status(201).json({ message: 'User Auth By Google Successfully.', token, user: user });
 
