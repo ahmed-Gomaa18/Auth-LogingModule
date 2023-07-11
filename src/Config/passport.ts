@@ -4,7 +4,10 @@ import { Strategy } from "passport-google-oauth20";
 import { UserModel as User } from "../Models/user.model";
 import {generatePasswordFun} from './genratePassword';
 import {sign as jwtSign} from 'jsonwebtoken';
+import { Strategy as FacebookStrategy } from 'passport-facebook';
 
+
+// Google
 const config = {
   CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
   CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
@@ -16,10 +19,9 @@ const AUTH_OPTIONS = {
   clientSecret: config.CLIENT_SECRET,
 };
 
-async function verifyCallbackAauth(accessToken, refreshToken, profile, done) {
-
+passport.use(new Strategy(AUTH_OPTIONS, async (accessToken, refreshToken, profile, done)=>{
   let user = await User.findOne({ email: profile._json.email });
-  let token;
+  let token: string;
 
   try {
     if (!user) {
@@ -32,6 +34,7 @@ async function verifyCallbackAauth(accessToken, refreshToken, profile, done) {
         confirm_email: true,
         googleToken: accessToken
       };
+      
       // Create User
       user = await new User(newUser);
       user = await user.save();
@@ -41,13 +44,66 @@ async function verifyCallbackAauth(accessToken, refreshToken, profile, done) {
     token = await jwtSign({id:user._id , role:user.role, permission: user.permission} , process.env.TOKEN_SIGNATURE , {expiresIn : '7d'});
   
     return done(null, token, user);
+
   } catch (err) {
+
     console.log(err)
     // Log Error
     done(err);
   }
-}
+}));
 
-passport.use(new Strategy(AUTH_OPTIONS, verifyCallbackAauth));
+
+// Facebook
+const Fbconfig = {
+  FACEBOOK_ID: process.env.FACEBOOK_CLIENT_ID,
+  FACEBOOK_SECRET: process.env.FACEBOOK_CLIENT_SECRET,
+};
+
+const FACEBOOK_OPTIONS = 
+  {
+    clientID: Fbconfig.FACEBOOK_ID,
+    clientSecret: Fbconfig.FACEBOOK_SECRET,
+    callbackURL: '/auth/facebook/callback',
+    profileFields: ['id', 'displayName', 'email']
+    
+};
+
+passport.use(new FacebookStrategy(FACEBOOK_OPTIONS, async (accessToken, refreshToken, profile, done)=>{
+  let user = await User.findOne({ email: profile._json.email });
+  let token: string;
+  
+  const [firstName, lastName] = profile._json.name.split(' ');
+  
+  try {
+    if (!user) {
+      let newUser = {
+        firstName: firstName,
+        lastName: lastName,
+        email: profile._json.email,
+        password: generatePasswordFun(),
+        authByThirdParty: true,
+        confirm_email: true,
+        facebookToken: accessToken
+      };
+
+      // Create User
+      user = await new User(newUser);
+      user = await user.save();
+      
+    }
+    // JWT Token
+    token = await jwtSign({id:user._id , role:user.role, permission: user.permission} , process.env.TOKEN_SIGNATURE , {expiresIn : '7d'});
+  
+    return done(null, token, user);
+
+  } catch (err) {
+
+    console.log(err)
+    // Log Error
+    done(err);
+  }
+}));
+
 
 export default passport;
