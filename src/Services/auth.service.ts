@@ -25,7 +25,7 @@ export async function signUp (firstName: string, lastName: string, email: string
 
         const hashPassword = await bcrypt.hash(password , parseInt(process.env.SALT_ROUND));
 
-        const newUser = await new User({ firstName, lastName, email, password:hashPassword });
+        const newUser = new User({ firstName, lastName, email, password:hashPassword });
         const savedUser = await newUser.save();
     
         if (!savedUser){
@@ -76,7 +76,7 @@ export function sendMailConfirmation(user_id: string,email: string, req: Request
 
 export async function signIn(email: string, password: string, rememberMe: boolean){
     
-    const user = await User.findOne({email});
+    let user = await User.findOne({email});
     if(!user){
         return {
             isSuccess:false, 
@@ -115,15 +115,17 @@ export async function signIn(email: string, password: string, rememberMe: boolea
                 {
                     const match = await user.checkPasswordIsValid(password);
                     if(!match){
-                        return {
-                            isSuccess:false, 
-                            message:'In-valid Email Or Password.',
-                            status: 400
-                        }
+                        return await lockUserLogin(user)
+
 
                     }
                     else
                     {
+                        const result = await unlockLoginTimeFun(user);
+                        if (result.isSuccess === false) {
+                        return result;
+                        }
+                        user = result;
     
                         // Check rememberMe
                         let expiresIn = '24h';
@@ -345,28 +347,6 @@ export async function generateResetPasswordLink(email: string){
 
 }
 
-//export const generateResetPasswordLink = async (email: string) => {
-
-//     const user = await User.findOne({ email });
-//     if (!user)
-//         throw new Error("User does not exist");
-
-//     const token = await Token.findOne({ userId: user._id });
-//     if (token)
-//         await token.deleteOne();
-
-//     const resetToken = crypto.randomBytes(32).toString("hex");
-//     const hash = await bcrypt.hash(resetToken, Number(process.env.SALT_ROUND));
-//     await new Token({
-//         userId: user._id,
-//         token: hash,
-//     }).save();
-
-//     const link = `${process.env.CLIENT_URL}/resetPassword?token=${resetToken}&id=${user._id}`;
-//     return {link: link, user_id: user._id};
-
-// }
-
 
 export async function resetPassword(userId: string, token: string, password: string){
 
@@ -425,4 +405,68 @@ export async function createUserSession(token_id: string, user: UserInterface, e
     {
         return token;
     }
+}
+
+
+
+
+async function lockUserLogin(user) {
+    user.failedLoginAttempts++;
+    await user.save();
+    if (user.failedLoginAttempts >= Number(process.env.MAX_LOGIN_ATTEMPTS)) {
+      if (user.unlockLoginTime && Date.now() > user.unlockLoginTime) {
+        user.failedLoginAttempts = 1;
+        user.unlockLoginTime = undefined;
+        await user.save();
+        return {
+          isSuccess: false,
+          message: "In-valid Email Or Password.",
+          status: 400,
+        };
+      }
+  
+      if (!user.unlockLoginTime) {
+        user.unlockLoginTime = calculateExpirationDate(process.env.LOCK_TIME); //Date.now() + 5000; 
+        await user.save();
+      }
+      return {
+        isSuccess: false,
+        message: `Too many failed login attempts. Please try again after ${getRemaningMints(
+          user.unlockLoginTime
+        )} minutes.`,
+        status: 401,
+      };
+    } else {
+      return {
+        isSuccess: false,
+        message: "In-valid Email Or Password.",
+        status: 400,
+      };
+    }
+}
+
+function getRemaningMints(userDate: number) : number{
+    return Math.floor((userDate - Date.now()) / (1000 * 60));
+}
+
+
+async function unlockLoginTimeFun(user) {
+    if (user.unlockLoginTime && user.unlockLoginTime > Date.now()) {
+      return {
+        isSuccess: false,
+        message: `Too many failed login attempts. Please try again after ${getRemaningMints(
+          user.unlockLoginTime
+        )} minutesss.`,
+        status: 401,
+      };
+    } else if (user.unlockLoginTime && Date.now() > user.unlockLoginTime) {
+      user.failedLoginAttempts = 0;
+      user.unlockLoginTime = undefined;
+      await user.save();
+    } else if (user.failedLoginAttempts) {
+      user.failedLoginAttempts = 0;
+      await user.save();
+    }
+  
+    return user;
 }

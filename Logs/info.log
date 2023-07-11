@@ -146,3 +146,25 @@ error stack: ValidationError: user validation failed: firstName: Path `firstName
     at /home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/mongoose/lib/schematype.js:1352:9
     at processTicksAndRejections (node:internal/process/task_queues:77:11)
 2023-07-11 14:12:43 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-11 18:31:45 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:31:48 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:31:50 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:31:58 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:31:59 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:31:59 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:32:33 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - Error Occurred While This User Try to LogIn email:(ahmedgomaa8998@gmail.com) Error: user validation failed: unlockLoginTime: Cast to date failed for value "16890895539491 * 60 * 60 * 1000" (type string) at path "unlockLoginTime". 
+2023-07-11 18:34:37 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:34:39 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:34:40 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:34:41 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:34:42 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:34:43 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:37:31 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - Too many failed login attempts. Please try again after 59 minutes.
+2023-07-11 18:38:26 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:38:27 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:38:28 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - Too many failed login attempts. Please try again after 59 minutes.
+2023-07-11 18:41:15 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:41:16 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:41:17 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - Too many failed login attempts. Please try again after 0 minutes.
+2023-07-11 18:41:30 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-11 18:42:20 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.

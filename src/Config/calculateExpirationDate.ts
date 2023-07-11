@@ -3,8 +3,6 @@ import { addHours, addDays, addWeeks, addMonths, addYears, getTime } from 'date-
 // Function to calculate expiration date in milliseconds
 export function calculateExpirationDate(duration: string): Number {
     const [amount, unit] = duration.split(/(\d+)/).filter(Boolean);
-    console.log(amount);
-    console.log(unit);
     
     let expirationDate: Date;
   

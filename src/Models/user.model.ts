@@ -15,6 +15,8 @@ export interface UserInterface extends Document{
     githubToken: string,
     facebookToken: string,
     authByThirdParty: boolean,
+    unlockLoginTime: Date;
+    failedLoginAttempts: number;
     password: string;
     checkPasswordIsValid(password: string): boolean;
 }
@@ -75,6 +77,11 @@ const userSchema: Schema<UserInterface> = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    unlockLoginTime: Date,
+    failedLoginAttempts: {
+      type: Number,
+      default: 0,
+    },
     password: {
         type: String, 
         required: true,
@@ -99,6 +106,20 @@ userSchema.methods.checkPasswordIsValid = async function (password: string) : Pr
 //     this.password = await bcrypt.hash(this.password , parseInt(process.env.SALT_ROUND));
 //     next();
 // });
+
+
+// userSchema.methods.toJSON = function () {
+//     const userObj = this.toObject();
+//     delete userObj.password;
+//     delete userObj.permission;
+//     delete userObj.role;
+//     delete userObj.active;
+//     delete userObj.confirm_email;
+//     delete userObj.isBlocked;
+//     delete userObj.authByThirdParty;
+//     delete userObj.failedLoginAttempts;
+//     return userObj;
+// };
 
 // Create UserModel
 export const UserModel = mongoose.model<UserInterface>("user", userSchema);
