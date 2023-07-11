@@ -14,6 +14,9 @@ import { googleRouter } from './Routes/google.router';
 import { collectEndpoints } from './Utils/getEndpoints';
 import defaultErrorHandler from './Utils/defaultErrorHandler';
 
+//test Remove
+import { calculateExpirationDate } from './Config/calculateExpirationDate';
+import {verify as jwtVerify} from 'jsonwebtoken';
 
 
 const app = express();
@@ -23,6 +26,7 @@ connectToDB()
 
 app.use(cors({
     credentials : true,
+    origin: [process.env.CLIENT_URL]
 }));
 
 app.use(compression());
@@ -72,6 +76,23 @@ const PORT = process.env.PORT || 3000;
 //     return res.status(200).send('Welcome To My API' + req.user );
 // })
 
+
+// app.get('/', async(req: Request, res: Response)=>{
+    
+//     const expireD = '24h';
+//     console.log(calculateExpirationDate(expireD))
+//     console.log(Date.now());
+    
+//     return res.status(200).send('Welcome To My API');
+// })
+
+// app.get('/', async(req: Request, res: Response)=>{
+    
+//     const decoded = await jwtVerify("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWMwZDYxYTkxNDk2ZmM1ZWVhZjQ2NyIsInJvbGUiOiJVc2VyIiwicGVybWlzc2lvbiI6W10sInRva2VuX2lkIjoiMWI4NGUzYTktZjBmZC00M2I1LTg0NjMtZjc2MTc3OGFiYTZhIiwiaWF0IjoxNjg4OTk3NzA1LCJleHAiOjE2ODk2MDI1MDV9.vDT4SuB_EQVSZRcbfHDB8xxsMqwKcr4IBfM0pQgfOsA" , process.env.TOKEN_SIGNATURE);
+//     console.log(decoded);
+    
+//     return res.status(200).send('Welcome To My API');
+// })
 
 
 app.use(defaultErrorHandler);

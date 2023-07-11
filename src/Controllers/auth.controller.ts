@@ -129,9 +129,10 @@ export async function resendConfrimEmail(req: Request, res: Response) {
 
 export async function Logout(req: Request, res: Response) {
     const userId = req.user.userId;
+    const tokent_id = req.token_id;
     try {
         // call service
-        const result = await signOut(userId);
+        const result = await signOut(userId, tokent_id);
         if (result.isSuccess) {
 
             Logger.info(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - This User id: (${result.user._id}) email: (${result.user.email}) Logout Successfully.`)
@@ -163,15 +164,16 @@ export function httpLogin(req: Request, res: Response, next: NextFunction) {
 }
 
 export function httpCallbackURL(req: Request, res: Response, next: NextFunction) {
-    passport.authenticate("google", { session: false }, (err, token, user) => {
+    passport.authenticate("google", { session: true }, (err, token, user) => {
         if (err) {
             return next(err);
         }
 
+        res.cookie('Token', token);
         // res.setHeader('Authorization', `Bearer ${token}`);
-        // res.redirect("https://www.google.com.eg/?hl=ar");
+        res.redirect("https://www.google.com.eg/?hl=ar");
 
-        res.status(201).json({ message: 'User Auth By Google Successfully.', token, user: user });
+        //res.status(201).json({ message: 'User Auth By Google Successfully.', token, user: user });
 
     })(req, res, next);
 }

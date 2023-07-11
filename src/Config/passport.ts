@@ -28,7 +28,9 @@ async function verifyCallbackAauth(accessToken, refreshToken, profile, done) {
         lastName: profile._json.family_name,
         email: profile._json.email,
         password: generatePasswordFun(),
-        singUsingGoogle: true,
+        authByThirdParty: true,
+        confirm_email: true,
+        googleToken: accessToken
       };
       // Create User
       user = await new User(newUser);
@@ -40,7 +42,7 @@ async function verifyCallbackAauth(accessToken, refreshToken, profile, done) {
   
     return done(null, token, user);
   } catch (err) {
-
+    console.log(err)
     // Log Error
     done(err);
   }

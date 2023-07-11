@@ -2,17 +2,19 @@ import mongoose, {Schema, Document} from "mongoose";
 import bcrypt, {compare} from 'bcryptjs';
 
 // Define User Interface Schema
-export interface User extends Document{
+interface User extends Document{
     firstName: string;
     lastName: string;
     email: string;
     role: string;
     permission: string[];
-    active: boolean;
     confirm_email: boolean;
     isBlocked: boolean;
     lastSeen: Date;
-    singUsingGoogle: boolean,
+    googleToken: string,
+    githubToken: string,
+    facebookToken: string,
+    authByThirdParty: boolean,
     password: string;
     checkPasswordIsValid(password: string): boolean;
 }
@@ -44,11 +46,6 @@ const userSchema: Schema<User> = new mongoose.Schema({
             type: String 
         }
     ],
-    active: {
-        type: Boolean,
-        required: true,
-        default: false
-    },
     confirm_email: {
         type: Boolean,
         required: true,
@@ -62,7 +59,19 @@ const userSchema: Schema<User> = new mongoose.Schema({
     lastSeen: {
         type: Date
     },
-    singUsingGoogle: {
+    googleToken: {
+        type: String,
+        required: false
+    },
+    githubToken: {
+        type: String,
+        required: false
+    },
+    facebookToken: {
+        type: String,
+        required: false
+    },
+    authByThirdParty: {
         type: Boolean,
         default: false
     },
@@ -92,4 +101,4 @@ userSchema.methods.checkPasswordIsValid = async function (password: string) : Pr
 // });
 
 // Create UserModel
-export const UserModel = mongoose.model<User>("User", userSchema);
+export const UserModel = mongoose.model<User>("user", userSchema);

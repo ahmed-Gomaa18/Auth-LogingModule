@@ -1,7 +1,10 @@
 import {Request, Response} from 'express';
 import {UserModel as User} from '../Models/user.model';
+import { UserSessionModel as UserSession } from '../Models/userSession.model';
 
-import {sign as jwtSign, verify as jwtVrify} from 'jsonwebtoken';
+import {sign as jwtSign, verify as jwtVerify} from 'jsonwebtoken';
+
+import { v4 as uuidv4 } from 'uuid';
 
 import { sendEmail } from '../Utils/sendEmailHelper';
 
@@ -11,7 +14,8 @@ import crypto from 'crypto';
 
 import moment from 'moment';
 
-import Token from '../Models/tokenPassword.model';
+import Token from '../Models/tokenResetPassword.model';
+import { calculateExpirationDate } from '../Config/calculateExpirationDate';
 
 
 
@@ -70,7 +74,7 @@ export function sendMailConfirmation(user_id: string,email: string, req: Request
 }
 
 export async function signIn(email: string, password: string, rememberMe: boolean){
-
+    
     const user = await User.findOne({email});
     if(!user){
         return {
@@ -99,44 +103,64 @@ export async function signIn(email: string, password: string, rememberMe: boolea
             }
             else
             {
-
-                const match = await user.checkPasswordIsValid(password);
-                if(!match){
-                    return {
+                if(user.authByThirdParty){
+                    return{
                         isSuccess:false, 
-                        message:'In-valid Email Or Password.',
+                        message:"You Can't Login From This Page. Please Reset Your Password. Thanks For Your Time.",
                         status: 400
                     }
-                }else
+                }
+                else
                 {
-                    if(user.active){
+                    const match = await user.checkPasswordIsValid(password);
+                    if(!match){
                         return {
                             isSuccess:false, 
-                            message:'You are Already Login.',
+                            message:'In-valid Email Or Password.',
                             status: 400
                         }
+
                     }
                     else
                     {
+    
+                        // Check rememberMe
                         let expiresIn = '24h';
                         if(rememberMe){
                             expiresIn = '7d';
                         }
-                        const token = await jwtSign({id:user._id , role:user.role, permission: user.permission} , process.env.TOKEN_SIGNATURE , {expiresIn});
                         
-                        user.active = true;
-                        const updateUser = await user.save();
-                        
+                        // Login Logic
+                        const token_id = uuidv4();
+    
+                        const token = await jwtSign({id:user._id , role:user.role, permission: user.permission, token_id: token_id} , process.env.TOKEN_SIGNATURE , {expiresIn});
+    
+                        const expire_date = calculateExpirationDate(expiresIn);
+    
+                        const newUserSession = await new UserSession({user_id: user._id, token_id: token_id, expire_date: expire_date});
+                        const savedUserSession = await newUserSession.save();
+    
+                        if(!savedUserSession){
+                            return {
+                                isSuccess:false, 
+                                message:'Oops, Occurred a problem While login. Please Try Login again.',
+                                status: 401,
+                            }
+                        }
+    
                         return {
                             isSuccess:true, 
                             message:'User Login Successfully.',
                             status: 200,
-                            user: updateUser,
+                            user: user,
                             Token: token
                         }
-
+    
+                        
                     }
+
                 }
+
             }
         }
     }
@@ -146,7 +170,7 @@ export async function signIn(email: string, password: string, rememberMe: boolea
 export async function confrimEmailService(token: string){
     
 
-    const decoded = jwtVrify(token , process.env.EMAIL_TOKEN);
+    const decoded = jwtVerify(token , process.env.EMAIL_TOKEN);
 
     if (!decoded) {
         return{
@@ -244,27 +268,47 @@ export async function resendConfrimEmailService(req: Request ,userId: string){
     }
 }
 
-export async function signOut(userId: string){
-    // Convert From Const to let & add {new: true}
+
+export async function signOut(userId: string, tokent_id: string){
+
     let userLogOut = await User.findByIdAndUpdate(userId , {
         lastSeen :moment().format() ,
-        active: false
     }, {new: true} );
+
     if (!userLogOut) {
 
         return{
             isSuccess:false, 
-            message:'Sorry , Please try to Logout agian.',
-            status: 503,
+            message:'Sorry, Please try to Logout agian.',
+            status: 401,
         }
     }
     else 
     {
-        return{
-            isSuccess:true, 
-            message:'User Logout Successfully.',
-            status: 200,
-            user: userLogOut
+        // Close Session && Deactive Session
+        const deactiveUserSession = await UserSession.findOneAndUpdate({token_id: tokent_id, user_id: userId},{
+            active: false,
+            end_date: moment().format()
+        }, {new: true});
+
+        if(!deactiveUserSession){
+
+            return{
+                isSuccess:false, 
+                message:'Sorry, Please try to Logout agian.',
+                status: 401,
+            }
+        }
+        else
+        {
+
+            return{
+                isSuccess:true, 
+                message:'User Logout Successfully.',
+                status: 200,
+                user: userLogOut
+            }
+            
         }
     }
 }

@@ -5,5 +5,6 @@ import Iuser from "Interfaces/user.interface";
 declare module 'express-serve-static-core'{
     export interface Request {
         user: Iuser,
+        token_id: string
     }
 }

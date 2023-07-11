@@ -86,3 +86,56 @@
 2023-07-09 13:42:32 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
 2023-07-09 13:44:01 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
 2023-07-09 13:44:49 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64aa7842a97ef82671d2267d) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-09 16:13:33 error: error: Error: getaddrinfo EAI_AGAIN www.googleapis.com 
+error stack: InternalOAuthError: Failed to obtain access token
+    at Strategy.OAuth2Strategy._createOAuthError (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/passport-oauth2/lib/strategy.js:423:17)
+    at /home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/passport-oauth2/lib/strategy.js:177:45
+    at /home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/oauth/lib/oauth2.js:191:18
+    at ClientRequest.<anonymous> (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/oauth/lib/oauth2.js:162:5)
+    at ClientRequest.emit (node:events:513:28)
+    at ClientRequest.emit (node:domain:489:12)
+    at TLSSocket.socketErrorListener (node:_http_client:502:9)
+    at TLSSocket.emit (node:events:513:28)
+    at TLSSocket.emit (node:domain:489:12)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+2023-07-09 16:17:07 error: error: Error: read ECONNRESET 
+error stack: InternalOAuthError: Failed to obtain access token
+    at Strategy.OAuth2Strategy._createOAuthError (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/passport-oauth2/lib/strategy.js:423:17)
+    at /home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/passport-oauth2/lib/strategy.js:177:45
+    at /home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/oauth/lib/oauth2.js:191:18
+    at ClientRequest.<anonymous> (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/oauth/lib/oauth2.js:162:5)
+    at ClientRequest.emit (node:events:513:28)
+    at ClientRequest.emit (node:domain:489:12)
+    at TLSSocket.socketErrorListener (node:_http_client:502:9)
+    at TLSSocket.emit (node:events:513:28)
+    at TLSSocket.emit (node:domain:489:12)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+2023-07-09 16:17:42 error: error: Error: read ECONNRESET 
+error stack: InternalOAuthError: Failed to fetch user profile
+    at /home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/passport-google-oauth20/lib/strategy.js:99:19
+    at ClientRequest.<anonymous> (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/oauth/lib/oauth2.js:162:5)
+    at ClientRequest.emit (node:events:513:28)
+    at ClientRequest.emit (node:domain:489:12)
+    at TLSSocket.socketErrorListener (node:_http_client:502:9)
+    at TLSSocket.emit (node:events:513:28)
+    at TLSSocket.emit (node:domain:489:12)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+2023-07-10 16:14:05 info: @Method:(post) @Endpoint:(/register) @FunName:(Register) - This User id: (64ac041dabfce2ff0b9d58f4) email: (ahmedgomaa8998@gmail.com) Created Successfully.
+2023-07-10 16:14:11 info: This User email: (ahmedgomaa8998@gmail.com) was been sent Successfully.
+2023-07-10 16:16:22 info: @Method:(get) @Endpoint:(/confrimEmail/:token) @FunName:(confrimEmail) - This User id: (64ac041dabfce2ff0b9d58f4) Confirmed Email Successfully.
+2023-07-10 16:16:47 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - Please confrim your Email first.
+2023-07-10 16:52:38 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-10 16:53:37 info: @Method:(post) @Endpoint:(/register) @FunName:(Register) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) Created Successfully.
+2023-07-10 16:53:40 info: This User email: (ahmedgomaa8998@gmail.com) was been sent Successfully.
+2023-07-10 16:53:43 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - Please confrim your Email first.
+2023-07-10 16:54:26 error: @Method:(get) @Endpoint:(/confrimEmail/:token) @FunName:(confrimEmail) - TypeError: Cannot read properties of undefined (reading '_id')
+2023-07-10 16:54:38 info: @Method:(get) @Endpoint:(/confrimEmail/:token) @FunName:(confrimEmail) - This User id: (64ac0d61a91496fc5eeaf467) Confirmed Email Successfully.
+2023-07-10 16:54:46 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-10 16:58:46 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-10 17:00:38 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
+2023-07-10 17:01:45 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-10 18:49:41 info: @Method:(patch) @Endpoint:(/logout) @FunName:(<anonymous>) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) Logout Successfully.
+2023-07-10 18:50:10 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-10 18:50:49 info: @Method:(patch) @Endpoint:(/logout) @FunName:(<anonymous>) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) Logout Successfully.
