@@ -168,3 +168,19 @@ error stack: ValidationError: user validation failed: firstName: Path `firstName
 2023-07-11 18:41:17 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - Too many failed login attempts. Please try again after 0 minutes.
 2023-07-11 18:41:30 error: @Method:(post) @Endpoint:(/login) @FunName:(Login) - In-valid Email Or Password.
 2023-07-11 18:42:20 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-12 11:48:07 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-12 11:59:29 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-12 14:28:05 info: @Method:(get) @Endpoint:(/users) @FunName:(findAllUsers) @userId(64ac0d61a91496fc5eeaf467) - fetch all users Successfully.
+2023-07-12 14:40:22 error: @Method:(get) @Endpoint:(/user/:id) @FunName:(findUser) @userId(64ac0d61a91496fc5eeaf467) - Cast to ObjectId failed for value "64ac2c9e9d3876a6df22a145d" (type string) at path "_id" for model "user"
+2023-07-12 14:40:44 info: @Method:(get) @Endpoint:(/user/:id) @FunName:(findUser) @userId(64ac0d61a91496fc5eeaf467) - fetch user Successfully.
+2023-07-12 14:42:04 info: @Method:(get) @Endpoint:(/user/:id) @FunName:(findUser) @userId(64ac0d61a91496fc5eeaf467) - fetch user Successfully.
+2023-07-12 14:42:42 info: @Method:(get) @Endpoint:(/users) @FunName:(findAllUsers) @userId(64ac0d61a91496fc5eeaf467) - fetch all users Successfully.
+2023-07-12 14:43:28 error: @Method:(get) @Endpoint:(/user/:id) @FunName:(findUser) @userId(64ac0d61a91496fc5eeaf467) - Oops..This User Not Exist.
+2023-07-12 14:43:36 info: @Method:(get) @Endpoint:(/user/:id) @FunName:(findUser) @userId(64ac0d61a91496fc5eeaf467) - fetch user Successfully.
+2023-07-12 15:11:35 info: @Method:(patch) @Endpoint:(/user/:id) @FunName:(updateUser) @userId(64ac0d61a91496fc5eeaf467) - Update user id: (64ac2c9e9d3876a6df22a145) Successfully.
+2023-07-12 15:12:16 info: @Method:(patch) @Endpoint:(/user/:id) @FunName:(updateUser) @userId(64ac0d61a91496fc5eeaf467) - Update user id: (64ac2c9e9d3876a6df22a145) Successfully.
+2023-07-12 15:13:20 info: @Method:(patch) @Endpoint:(/user/:id) @FunName:(updateUser) @userId(64ac0d61a91496fc5eeaf467) - Update user id: (64ac2c9e9d3876a6df22a145) Successfully.
+2023-07-12 15:17:30 info: @Method:(patch) @Endpoint:(/user/:id) @FunName:(updateUser) @userId(64ac0d61a91496fc5eeaf467) - Update user id: (64ac2c9e9d3876a6df22a145) Successfully.
+2023-07-12 15:17:39 error: @Method:(patch) @Endpoint:(/user/:id) @FunName:(updateUser) @userId(64ac0d61a91496fc5eeaf467) - Cast to ObjectId failed for value "64ac2c9e9d3876a6df22a14s" (type string) at path "_id" for model "user"
+2023-07-12 15:17:52 error: @Method:(patch) @Endpoint:(/user/:id) @FunName:(updateUser) @userId(64ac0d61a91496fc5eeaf467) - Oops..This User Not Exist So Can not Updated.
+2023-07-12 15:18:00 info: @Method:(patch) @Endpoint:(/user/:id) @FunName:(updateUser) @userId(64ac0d61a91496fc5eeaf467) - Update user id: (64ac2c9e9d3876a6df22a145) Successfully.

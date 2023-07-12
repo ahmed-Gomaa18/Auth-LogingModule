@@ -48,7 +48,7 @@ export function authRoleMiddleware(accessRoles: string[]){
                                 next();
 
                             } else {
-                                res.status(401).json({message:"not auth account"});
+                                res.status(401).json({message:"Not auth account"});
 
                             }
 
