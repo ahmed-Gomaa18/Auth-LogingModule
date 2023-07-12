@@ -8,10 +8,12 @@ import dotenv from 'dotenv';
 dotenv.config(); 
 import passport from './Config/passport';
 import {connect as connectToDB} from './DB/connect.db';
-
+// Routers
 import { authRouter } from './Routes/auth.router';
 import { thirdPartyRouter } from './Routes/thirdPartyCallback.route';
-import { collectEndpoints } from './Utils/getEndpoints';
+import { adminRouter } from './Routes/admin.router';
+
+
 import defaultErrorHandler from './Utils/defaultErrorHandler';
 
 //test Remove
@@ -55,6 +57,9 @@ process.on("unhandledRejection", (exception)=>{
 // Callback Third Party
 app.use('/auth', thirdPartyRouter);
 
+// Dashboard Router
+app.use('/api/v1/admin', adminRouter);
+
 // Router
 app.use('/api/v1/auth', authRouter);
 
@@ -62,38 +67,10 @@ const server = http.createServer(app);
 
 const PORT = process.env.PORT || 3000;
 
-
-
-//app.get('/', async(req: Request, res: Response)=>{
-//     req.user = {userId: "asdadads", auth: true};
-//     console.log(req.route);
-//     console.log(req.route.path);
-//     console.log(req.route.stack[0].name);
-//     console.log(req.user.username);
-
-//     console.log(collectEndpoints());
-    
-//     return res.status(200).send('Welcome To My API' + req.user );
-// })
-
-
-// app.get('/', async(req: Request, res: Response)=>{
-    
-//     const expireD = '24h';
-//     console.log(calculateExpirationDate(expireD))
-//     console.log(Date.now());
-    
-//     return res.status(200).send('Welcome To My API');
-// })
-
-// app.get('/', async(req: Request, res: Response)=>{
-    
-//     const decoded = await jwtVerify("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWMwZDYxYTkxNDk2ZmM1ZWVhZjQ2NyIsInJvbGUiOiJVc2VyIiwicGVybWlzc2lvbiI6W10sInRva2VuX2lkIjoiMWI4NGUzYTktZjBmZC00M2I1LTg0NjMtZjc2MTc3OGFiYTZhIiwiaWF0IjoxNjg4OTk3NzA1LCJleHAiOjE2ODk2MDI1MDV9.vDT4SuB_EQVSZRcbfHDB8xxsMqwKcr4IBfM0pQgfOsA" , process.env.TOKEN_SIGNATURE);
-//     console.log(decoded);
-    
-//     return res.status(200).send('Welcome To My API');
-// })
-
+// Handle non-existent endpoints
+app.use((req: Request, res: Response) => {
+    res.status(404).json({ message: 'This Endpoint not found' });
+});
 
 app.use(defaultErrorHandler);
 
