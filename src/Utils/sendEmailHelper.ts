@@ -31,12 +31,12 @@ export function sendEmail(to: string, subject: string, message: string, id: stri
     transporter.sendMail(mailOption, (err, _)=>{
 
         if(err){
-            console.log('Error Happen Here');
+
             console.log(err);      
             Logger.error(`This User id: (${id}) email: (${to}) an error occurred While a Sign up confirmation email was being sent.`);
         }
         else{
-            console.log('Success Send Mail');
+
             Logger.info(`This User email: (${to}) was been sent Successfully.`);
         }
         

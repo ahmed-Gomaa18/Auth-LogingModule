@@ -104,3 +104,4 @@ error stack: ValidationError: user validation failed: firstName: Path `firstName
 2023-07-12 14:43:28 error: @Method:(get) @Endpoint:(/user/:id) @FunName:(findUser) @userId(64ac0d61a91496fc5eeaf467) - Oops..This User Not Exist.
 2023-07-12 15:17:39 error: @Method:(patch) @Endpoint:(/user/:id) @FunName:(updateUser) @userId(64ac0d61a91496fc5eeaf467) - Cast to ObjectId failed for value "64ac2c9e9d3876a6df22a14s" (type string) at path "_id" for model "user"
 2023-07-12 15:17:52 error: @Method:(patch) @Endpoint:(/user/:id) @FunName:(updateUser) @userId(64ac0d61a91496fc5eeaf467) - Oops..This User Not Exist So Can not Updated.
+

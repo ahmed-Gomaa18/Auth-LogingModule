@@ -1,4 +1,6 @@
-import winston from 'winston'
+import winston from 'winston';
+
+// Note => To Use Looger pass {req} like -----> Logger.info('Your Custom message', {req});
 
 const levels = {
   error: 0,
@@ -18,7 +20,7 @@ const level = () => {
 const format = winston.format.combine(
   winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
   winston.format.printf(
-    (info) => `${info.timestamp} ${info.level}: ${info.message}`,
+    ({timestamp, level, message, req}) => `${timestamp} ${level}: ${req ? `@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunctionName:(${req.route.stack[0].name}):` : ''}${req.user ? `@UserId(${req.user.userId}):` : ''} ${message}`,
   ),
 )
 

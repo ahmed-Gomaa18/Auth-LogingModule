@@ -1,5 +1,5 @@
 import { signUp,sendMailConfirmation, signIn, confrimEmailService, resendConfrimEmailService, signOut , generateResetPasswordLink, resetPassword} from "../Services/auth.service";
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response, request } from "express";
 
 import Logger from '../Config/logger';
 
@@ -18,14 +18,15 @@ export async function Register(req: Request, res: Response) {
         if (result.isSuccess) {
             // Send Mail
             sendMailConfirmation(result.user._id, result.user.email, req);
-            // Logging
-            Logger.info(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - This User id: (${result.user._id}) email: (${result.user.email}) Created Successfully.`)
 
-            return res.status(result.status).json({ "message": result.message, "user": result.user });
+            // Logging
+            Logger.info(`email: (${result.user.email}) Created Successfully.`, { req })
+
+            return res.status(result.status).json({ message: result.message, "user": result.user });
         }
         else {
-
-            return res.status(result.status).json({ "message": result.message });
+            
+            return res.status(result.status).json({ message: result.message });
 
         }
 
@@ -48,24 +49,23 @@ export async function Login(req: Request, res: Response) {
         // call service
         const result = await signIn(email, password, rememberMe);
         if (result.isSuccess) {
+            Logger.info(`UserId: (${result.user._id}) email: (${result.user.email}) LogIn Successfully.`, { req });
 
-            Logger.info(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - This User id: (${result.user._id}) email: (${result.user.email}) LogIn Successfully.`)
-
-            return res.status(result.status).json({ "message": result.message, "user": result.user, "token": result.Token });
+            return res.status(result.status).json({ message: result.message, user: result.user, token: result.Token });
         }
         else {
 
-            Logger.error(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - ${result.message}`)
+            Logger.error(`${result.message}`, {req})
 
-            return res.status(result.status).json({ "message": result.message });
+            return res.status(result.status).json({message: result.message });
 
         }
 
     }
     catch (error) {
-        console.log(error);
-        // log Error
-        Logger.error(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - Error Occurred While This User Try to LogIn email:(${email}) Error: ${error.message}. `)
+
+        Logger.error(`Error Occurred While This User Try to LogIn email:(${email}) Error: ${error.message}.`, { req })
+        
         res.status(500).json({ message: "Catch Error" + error.message });
     }
 }
@@ -79,24 +79,22 @@ export async function confrimEmail(req: Request, res: Response) {
             // Render Front Page
 
             //Log To Success
-            Logger.info(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - This User id: (${result.user._id}) Confirmed Email Successfully.`)
-            return res.status(result.status).json({ "message": result.message });
+            Logger.info(`This User id: (${result.user._id}) Confirmed Email Successfully.`, { req });
+            return res.status(result.status).json({message: result.message });
         }
         else {
 
-            Logger.error(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - This User id: (${result.user._id}) ${result.message}`);
-            return res.status(result.status).json({ "message": result.message });
+            Logger.error(`This User id: (${result.user._id}) ${result.message}`, {req});
+            return res.status(result.status).json({message: result.message });
 
         }
     }
     catch (error) {
-
-        //console.log(error);
         if (error.message == "jwt expired") {
-            Logger.error(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - Your Token is Expired`);
+            Logger.error(`Your Token is Expired`, {req});
             res.status(500).json({ message: "Your Token is Expired" })
         } else {
-            Logger.error(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - ${error}`);
+            Logger.error(`${error}`, {req});
             res.status(500).json({ message: "Catch Error", error })
         }
     }
@@ -110,19 +108,19 @@ export async function resendConfrimEmail(req: Request, res: Response) {
         if (result.isSuccess) {
 
             //Log To Success
-            Logger.info(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - This User id: (${userId}) Resend Confirmed Email Successfully.`)
-            return res.status(result.status).json({ "message": result.message });
+            Logger.info(`This User id: (${userId}) Resend Confirmed Email Successfully.`, {req});
+            return res.status(result.status).json({message: result.message });
         }
         else {
 
-            Logger.error(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - This User id: (${userId}) ${result.message}`);
-            return res.status(result.status).json({ "message": result.message });
+            Logger.error(`This User id: (${userId}) ${result.message}`, {req});
+            return res.status(result.status).json({message: result.message });
 
         }
     }
     catch (error) {
         // log Error
-        Logger.error(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - Error Occurred While Resend Confirmed Email To This User (${req.params.userId}) : ${error.message}. `)
+        Logger.error(`Error Occurred While Resend Confirmed Email To This User (${req.params.userId}) : ${error.message}.`, {req})
         res.status(500).json({ message: "Catch Error" + error.message })
     }
 }
@@ -135,23 +133,22 @@ export async function Logout(req: Request, res: Response) {
         const result = await signOut(userId, tokent_id);
         if (result.isSuccess) {
 
-            Logger.info(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - This User id: (${result.user._id}) email: (${result.user.email}) Logout Successfully.`)
+            Logger.info(`-email: (${result.user.email}) Logout Successfully.`, {req});
 
-            return res.status(result.status).json({ "message": result.message });
+            return res.status(result.status).json({message: result.message });
         }
         else {
 
-            Logger.error(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - ${result.message}`)
+            Logger.error(`${result.message}`, {req});
 
-            return res.status(result.status).json({ "message": result.message });
+            return res.status(result.status).json({message: result.message });
 
         }
 
     }
     catch (error) {
-        console.log(error);
         // log Error
-        Logger.error(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - Error Occurred While This User Try to LogIn id:(${userId}) Error: ${error.message}. `)
+        Logger.error(`Error Occurred While This User Try to LogIn id:(${userId}) Error: ${error.message}.`, {req})
         res.status(500).json({ message: "Catch Error" + error.message });
     }
 }
@@ -166,9 +163,10 @@ export function httpLoginByGoogle(req: Request, res: Response, next: NextFunctio
 export function httpCallbackGoogleURL(req: Request, res: Response, next: NextFunction) {
     passport.authenticate("google", { session: true }, (err, token, user) => {
         if (err) {
+            Logger.error(`This UserId (${user._id}) is failed to Authenticated by Google`, {req});
             return next(err);
         }
-
+        Logger.info(`This UserId (${user._id}) is Authenticated by Google`, {req});
         res.cookie('Token', token);
         // res.setHeader('Authorization', `Bearer ${token}`);
         res.redirect("http://localhost:3001");
@@ -189,8 +187,11 @@ export function httpLoginByFacebook(req: Request, res: Response, next: NextFunct
 export function httpCallbackFacebookURL(req: Request, res: Response, next: NextFunction) {
     passport.authenticate("facebook", { session: true }, (err, token, user) => {
         if (err) {
+            Logger.error(`This UserId (${user._id}) is failed to Authenticated by Facebook`, {req});
             return next(err);
         }
+
+        Logger.error(`This UserId (${user._id}) is Authenticated by Facebook`, {req});
 
         res.cookie('Token', token);
         // res.setHeader('Authorization', `Bearer ${token}`);
@@ -218,20 +219,19 @@ export async function requestResetPassword(req: Request, res: Response, next: Ne
             sendEmail(email, "Password Reset Request", message, result.user_id );
 
             // Loging
-            Logger.info(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - This User id: (${result.user_id}) email: (${email}) Want To Reset Password.`)
-            
+            Logger.info(`This User id: (${result.user_id}) email: (${email}) Want To Reset Password.`, {req})
 
             return res.status(result.status).json({message: result.message});
 
         }else{
 
-            Logger.error(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - This User email: (${email}) ${result.message}`);
+            Logger.error(`This User email: (${email}) ${result.message}`, {req});
             return res.status(result.status).json({message: result.message});
         }
 
     }
     catch (error) {
-        // console.log(error);
+        Logger.error(`Error Occurred While This User Try to genrate reset password link Error: ${error.message}.`, {req})
         return next(new AppError(error.message, 500))
     }
 }
@@ -251,8 +251,7 @@ export async function resetPasswordController(req: Request, res: Response, next:
 
 
             // Loging
-            Logger.info(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - This User id: (${result.user._id}) email: (${result.user.email}) Reset Password Successfully.`)
-
+            Logger.info(`This User id: (${result.user._id}) email: (${result.user.email}) Reset Password Successfully.`, {req})
 
             return res.status(result.status).json({message: result.message});
 
@@ -260,13 +259,16 @@ export async function resetPasswordController(req: Request, res: Response, next:
         else
         {
             // Loging Erorr
-            Logger.error(`@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunName:(${req.route.stack[0].name}) - This User id: (${userId}) ${result.message}`);
+            Logger.error(`This User id: (${userId}) ${result.message}`, {req});
             
             return res.status(result.status).json({message: result.message});
             
         }
 
     } catch (error) {
+       
+        Logger.error(`Error Occurred While Try to Send Successful reset password mail: ${error.message}.`, {req})
+      
         return next(new AppError(error.message, 500))
     }
 

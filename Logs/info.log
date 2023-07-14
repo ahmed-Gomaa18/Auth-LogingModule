@@ -184,3 +184,35 @@ error stack: ValidationError: user validation failed: firstName: Path `firstName
 2023-07-12 15:17:39 error: @Method:(patch) @Endpoint:(/user/:id) @FunName:(updateUser) @userId(64ac0d61a91496fc5eeaf467) - Cast to ObjectId failed for value "64ac2c9e9d3876a6df22a14s" (type string) at path "_id" for model "user"
 2023-07-12 15:17:52 error: @Method:(patch) @Endpoint:(/user/:id) @FunName:(updateUser) @userId(64ac0d61a91496fc5eeaf467) - Oops..This User Not Exist So Can not Updated.
 2023-07-12 15:18:00 info: @Method:(patch) @Endpoint:(/user/:id) @FunName:(updateUser) @userId(64ac0d61a91496fc5eeaf467) - Update user id: (64ac2c9e9d3876a6df22a145) Successfully.
+2023-07-12 16:16:24 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-12 16:17:05 info: @Method:(get) @Endpoint:(/users) @FunName:(findAllUsers) @userId(64ac0d61a91496fc5eeaf467) - fetch all users Successfully.
+2023-07-12 16:18:39 info: @Method:(patch) @Endpoint:(/user/:id) @FunName:(updateUser) @userId(64ac0d61a91496fc5eeaf467) - Update user id: (64ac2c9e9d3876a6df22a145) Successfully.
+2023-07-12 16:18:46 info: @Method:(patch) @Endpoint:(/user/:id) @FunName:(updateUser) @userId(64ac0d61a91496fc5eeaf467) - Update user id: (64ac2c9e9d3876a6df22a145) Successfully.
+2023-07-12 16:19:33 info: @Method:(get) @Endpoint:(/user/:id) @FunName:(findUser) @userId(64ac0d61a91496fc5eeaf467) - fetch user Successfully.
+2023-07-12 18:32:08 info: @Method:(get) @Endpoint:(/users) @FunName:(findAllUsers) @userId(64ac0d61a91496fc5eeaf467) - fetch all users Successfully.
+2023-07-12 18:33:08 info: @Method:(get) @Endpoint:(/users) @FunName:(findAllUsers) @userId(64ac0d61a91496fc5eeaf467) - fetch all users Successfully.
+2023-07-13 12:23:30 error: error: Error: ENOENT: no such file or directory, scandir '/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/src/Utils/Routes' 
+error stack: Error: ENOENT: no such file or directory, scandir '/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/src/Utils/Routes'
+    at Object.readdirSync (node:fs:1452:3)
+    at collectEndpoints (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/src/Utils/getEndpoints.ts:8:27)
+    at /home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/src/index.ts:70:33
+    at Layer.handle [as handle_request] (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/express/lib/router/index.js:280:10)
+2023-07-13 12:23:48 error: error: Error: ENOENT: no such file or directory, scandir '/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/src/Utils/Routes' 
+error stack: Error: ENOENT: no such file or directory, scandir '/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/src/Utils/Routes'
+    at Object.readdirSync (node:fs:1452:3)
+    at collectEndpoints (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/src/Utils/getEndpoints.ts:8:27)
+    at /home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/src/index.ts:70:33
+    at Layer.handle [as handle_request] (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ahmed/Fixed/Projects/AuthService/Auth-LogingModule/node_modules/express/lib/router/index.js:280:10)
+2023-07-13 14:12:06 info: @Method:(post) @Endpoint:(/login) @FunName:(Login) - This User id: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.

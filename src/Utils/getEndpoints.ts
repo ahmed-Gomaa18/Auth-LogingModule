@@ -3,7 +3,7 @@ import fs from 'fs';
 
 export function collectEndpoints(): {}[] {
 
-    const dirname = __dirname.replace('/Lib', '');
+    const dirname = __dirname.replace('/Utils', '');
     const routesPath = path.join(dirname, 'Routes'); 
     const routeFiles = fs.readdirSync(routesPath);
     console.log(routeFiles)
