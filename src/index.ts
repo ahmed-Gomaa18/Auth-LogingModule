@@ -15,10 +15,7 @@ import { adminRouter } from './Routes/admin.router';
 
 
 import defaultErrorHandler from './Utils/defaultErrorHandler';
-
-//test Remove
-import { calculateExpirationDate } from './Config/calculateExpirationDate';
-import {verify as jwtVerify} from 'jsonwebtoken';
+import Logger from './Config/logger';
 
 
 const app = express();
@@ -63,6 +60,7 @@ app.use('/api/v1/admin', adminRouter);
 // Router
 app.use('/api/v1/auth', authRouter);
 
+//
 const server = http.createServer(app);
 
 const PORT = process.env.PORT || 3000;
