@@ -1,5 +1,9 @@
-import { signUp,sendMailConfirmation, signIn, confrimEmailService, resendConfrimEmailService, signOut , generateResetPasswordLink, resetPassword} from "../Services/auth.service";
-import { NextFunction, Request, Response, request } from "express";
+import {
+    signUp, sendMailConfirmation, signIn,
+    confrimEmailService, resendConfrimEmailService, signOut,
+    generateResetPasswordLink, resetPassword, keycloakLoginService, keycloakSignupService, keycloakResetPasswordService
+} from "../Services/auth.service";
+import { NextFunction, Request, Response } from "express";
 
 import Logger from '../Config/logger';
 
@@ -11,7 +15,7 @@ import { sendEmail } from "../Utils/sendEmailHelper";
 export async function Register(req: Request, res: Response) {
     try {
 
-        const {firstName, lastName, email, password} = req.body;
+        const { firstName, lastName, email, password } = req.body;
 
         // Call Service
         const result = await signUp(firstName, lastName, email, password);
@@ -153,6 +157,37 @@ export async function Logout(req: Request, res: Response) {
     }
 }
 
+export async function loginByKeycloak(req: Request, res: Response, next: NextFunction) {
+    try {
+        const { email, password } = req.body;
+        const { user, token } = await keycloakLoginService(email, password);
+        res.json({ message: 'ok', user, token })
+    } catch (error) {
+        return next(new AppError('invalid Credentials', 500))
+    }
+}
+
+export async function signupByKeycloak(req: Request, res: Response, next: NextFunction) {
+    try {
+        const { email, firstName, lastName, password } = req.body;
+        await keycloakSignupService({ email, firstName, lastName, password });
+        res.json({ message: 'Signed up Successfully' });
+    } catch (error) {
+        return next(error)
+    }
+}
+
+export async function resetPasswordByKeycloak(req: Request, res: Response, next: NextFunction) {
+    try {
+        const { email, password } = req.body;
+        await keycloakResetPasswordService(email, password );
+        res.json({ message: 'Password is Reset Successfully' })
+    } catch (error) {
+        return next(error)
+    }
+}
+
+
 // Auth By Google
 export function httpLoginByGoogle(req: Request, res: Response, next: NextFunction) {
     passport.authenticate("google", {
@@ -203,12 +238,12 @@ export function httpCallbackFacebookURL(req: Request, res: Response, next: NextF
 }
 
 
-export async function requestResetPassword(req: Request, res: Response, next: NextFunction){
+export async function requestResetPassword(req: Request, res: Response, next: NextFunction) {
     try {
         const { email } = req.body;
         const result = await generateResetPasswordLink(email);
 
-        if(result.isSuccess){
+        if (result.isSuccess) {
 
             // Send Mail
             const message = `<h1>Welcome👋</h1>
@@ -216,14 +251,15 @@ export async function requestResetPassword(req: Request, res: Response, next: Ne
             Please Follow This Link To Reset Your Password.
             </a> `;
 
-            sendEmail(email, "Password Reset Request", message, result.user_id );
+            sendEmail(email, "Password Reset Request", message, result.user_id);
 
             // Loging
             Logger.info(`This User id: (${result.user_id}) email: (${email}) Want To Reset Password.`, {req})
+            
 
             return res.status(result.status).json({message: result.message});
 
-        }else{
+        } else {
 
             Logger.error(`This User email: (${email}) ${result.message}`, {req});
             return res.status(result.status).json({message: result.message});
@@ -236,28 +272,27 @@ export async function requestResetPassword(req: Request, res: Response, next: Ne
     }
 }
 
-export async function resetPasswordController(req: Request, res: Response, next: NextFunction){
+export async function resetPasswordController(req: Request, res: Response, next: NextFunction) {
     try {
         const { userId, token, password } = req.body;
         const result = await resetPassword(userId, token, password);
-        if(result.isSuccess){
-            
+        if (result.isSuccess) {
+
             // Send Mail
             const message = `<h1>Welcome Back👋</h1>
             <h3>
             Your password has been changed successfully.
             </h3> `;
-            sendEmail(result.user.email, "Password Reset Request", message, result.user._id );
+            sendEmail(result.user.email, "Password Reset Request", message, result.user._id);
 
 
             // Loging
             Logger.info(`This User id: (${result.user._id}) email: (${result.user.email}) Reset Password Successfully.`, {req})
 
-            return res.status(result.status).json({message: result.message});
+            return res.status(result.status).json({ message: result.message });
 
         }
-        else
-        {
+        else {
             // Loging Erorr
             Logger.error(`This User id: (${userId}) ${result.message}`, {req});
             
