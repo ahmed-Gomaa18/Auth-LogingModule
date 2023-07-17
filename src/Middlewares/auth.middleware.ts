@@ -1,5 +1,4 @@
 import {verify as jwtVerify} from 'jsonwebtoken';
-import {UserModel as User} from '../Models/user.model';
 import {UserSessionModel as UserSession} from '../Models/userSession.model';
 import { NextFunction, Request, Response } from "express";
 
@@ -59,9 +58,8 @@ export function authRoleMiddleware(accessRoles: string[]){
             }
         
         } catch (error) {
-            //console.log(error);
+          
             if (error?.message == "jwt expired") {
-              //const updateActive =  await User.findOneAndUpdate({_Token:token},{active:false ,_Token:null},{new:true})
               res.status(464).json({message:"Please Login again"})
             }else{
                 res.status(500).json({message:"Catch Error From Auth Middleware " , error});
@@ -72,7 +70,7 @@ export function authRoleMiddleware(accessRoles: string[]){
 
 export function authPermissionMiddleware(EndPoint: string){
     return (req: Request, res: Response, next: NextFunction)=>{
-        // req.user = {auth: true, user_permission: ['goko']}
+       
         
         // Check User Authentication
         if(!req?.user?.auth){
@@ -83,10 +81,7 @@ export function authPermissionMiddleware(EndPoint: string){
             if(req.user.user_permission.includes(EndPoint)){
                 next();
             }
-            // else if(req.user.user_role.includes('Admin'))
-            // {
-            //     next();
-            // }
+            
             else
             {
                 res.status(401).json({message:"Forbidden"});

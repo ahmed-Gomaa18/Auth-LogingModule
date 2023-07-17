@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request } from 'express';
 import { UserModel as User, UserInterface } from '../Models/user.model';
 import { UserSessionModel as UserSession } from '../Models/userSession.model';
 
@@ -58,8 +58,7 @@ export function sendMailConfirmation(user_id: string, email: string, req: Reques
     const token = jwtSign(payload, secretKey, {
         algorithm: 'HS256',
         expiresIn: '30d',
-        //issuer: 'your-issuer',
-        //audience: 'your-audience',
+        
     });
 
     // send Email
@@ -388,7 +387,7 @@ export async function generateResetPasswordLink(email: string) {
 
     return {
         isSuccess: true,
-        message: "Check Your Mail For Reset Password.",
+        message: "Check Your Mail To Reset Your Password.",
         status: 200,
         link: link,
         user_id: user._id
@@ -444,7 +443,7 @@ export async function createUserSession(token_id: string, user: UserInterface, e
 
     const expire_date = calculateExpirationDate(expiresIn);
 
-    const newUserSession = await new UserSession({ user_id: user._id, token_id: token_id, expire_date: expire_date });
+    const newUserSession =  new UserSession({ user_id: user._id, token_id: token_id, expire_date: expire_date });
     const savedUserSession = await newUserSession.save();
     if (!savedUserSession) {
         return "Faild";
@@ -473,12 +472,12 @@ async function lockUserLogin(user) {
         }
 
         if (!user.unlockLoginTime) {
-            user.unlockLoginTime = calculateExpirationDate(process.env.LOCK_TIME); //Date.now() + 5000; 
+            user.unlockLoginTime = calculateExpirationDate(process.env.LOCK_TIME); 
             await user.save();
         }
         return {
             isSuccess: false,
-            message: `Too many failed login attempts. Please try again after ${getRemaningMints(
+            message: `Too many failed login attempts. Please try again after ${getRemaningMinutes(
                 user.unlockLoginTime
             )} minutes.`,
             status: 401,
@@ -492,7 +491,7 @@ async function lockUserLogin(user) {
     }
 }
 
-function getRemaningMints(userDate: number): number {
+function getRemaningMinutes(userDate: number): number {
     return Math.floor((userDate - Date.now()) / (1000 * 60));
 }
 
@@ -501,7 +500,7 @@ async function unlockLoginTimeFun(user) {
     if (user.unlockLoginTime && user.unlockLoginTime > Date.now()) {
         return {
             isSuccess: false,
-            message: `Too many failed login attempts. Please try again after ${getRemaningMints(
+            message: `Too many failed login attempts. Please try again after ${getRemaningMinutes(
                 user.unlockLoginTime
             )} minutesss.`,
             status: 401,
