@@ -222,17 +222,17 @@ export function httpLoginByFacebook(req: Request, res: Response, next: NextFunct
 export function httpCallbackFacebookURL(req: Request, res: Response, next: NextFunction) {
     passport.authenticate("facebook", { session: true }, (err, token, user) => {
         if (err) {
-            Logger.error(`This UserId (${user._id}) is failed to Authenticated by Facebook`, {req});
+            Logger.error(`User with id (${user.id}) failed to be authenticated by Facebook`, {req});
             return next(err);
         }
 
-        Logger.error(`This UserId (${user._id}) is Authenticated by Facebook`, {req});
+        Logger.info(`User with id (${user.id}) is authenticated by facebook`, {req});
 
         res.cookie('Token', token);
-        // res.setHeader('Authorization', `Bearer ${token}`);
+        
         res.redirect("http://localhost:3001");
 
-        //res.status(201).json({ message: 'User Auth By Google Successfully.', token, user: user });
+        
 
     })(req, res, next);
 }
