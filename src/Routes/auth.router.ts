@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { Register, Login, confrimEmail, resendConfrimEmail, Logout, httpLoginByGoogle, httpLoginByFacebook, requestResetPassword, resetPasswordController, loginByKeycloak, signupByKeycloak, resetPasswordByKeycloak } from "../Controllers/auth.controller";
-import { authRoleMiddleware, authPermissionMiddleware } from "../Middlewares/auth.middleware";
+import { authRoleMiddleware } from "../Middlewares/auth.middleware";
 
 export const authRouter = Router();
 
@@ -22,6 +22,4 @@ authRouter.post("/login/keycloak", loginByKeycloak);
 authRouter.post("/signup/keycloak", signupByKeycloak);
 authRouter.post("/PasswordReset/keycloak", resetPasswordByKeycloak);
 
-// authRouter.get('/test', authPermissionMiddleware('goko'), (req: Request, res: Response)=>{
-//     res.status(200).json({message: "Success Test"})
-// })
+

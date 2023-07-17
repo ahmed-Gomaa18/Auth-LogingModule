@@ -15,7 +15,7 @@ import { adminRouter } from './Routes/admin.router';
 
 
 import defaultErrorHandler from './Utils/defaultErrorHandler';
-import Logger from './Config/logger';
+
 
 
 const app = express();
@@ -41,14 +41,14 @@ app.use(passport.initialize());
 process.on("uncaughtException", (exception)=>{
     console.log(exception)
     console.log("Error From uncaughtException");
-    // process.exit(1);
+   
 })
-// Handel UnhandledRejection Exception 
+// Handle UnhandledRejection Exception 
 process.on("unhandledRejection", (exception)=>{
     console.log(exception)
     console.log("Promise Rejection");
 
-    // process.exit(1);
+
 });
 
 // Callback Third Party

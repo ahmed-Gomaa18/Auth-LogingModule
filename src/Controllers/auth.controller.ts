@@ -203,10 +203,9 @@ export function httpCallbackGoogleURL(req: Request, res: Response, next: NextFun
         }
         Logger.info(`This UserId (${user._id}) is Authenticated by Google`, {req});
         res.cookie('Token', token);
-        // res.setHeader('Authorization', `Bearer ${token}`);
+        
         res.redirect("http://localhost:3001");
 
-        //res.status(201).json({ message: 'User Auth By Google Successfully.', token, user: user });
 
     })(req, res, next);
 }

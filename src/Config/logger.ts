@@ -1,6 +1,6 @@
 import winston from 'winston';
 
-// Note => To Use Looger pass {req} like -----> Logger.info('Your Custom message', {req});
+
 
 const levels = {
   error: 0,

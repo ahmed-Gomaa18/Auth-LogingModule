@@ -85,7 +85,7 @@ const userSchema: Schema<UserInterface> = new mongoose.Schema({
     password: {
         type: String, 
         required: true,
-        //select: false}
+        
     }
 },
 { 
@@ -108,18 +108,7 @@ userSchema.methods.checkPasswordIsValid = async function (password: string) : Pr
 // });
 
 
-// userSchema.methods.toJSON = function () {
-//     const userObj = this.toObject();
-//     delete userObj.password;
-//     delete userObj.permission;
-//     delete userObj.role;
-//     delete userObj.active;
-//     delete userObj.confirm_email;
-//     delete userObj.isBlocked;
-//     delete userObj.authByThirdParty;
-//     delete userObj.failedLoginAttempts;
-//     return userObj;
-// };
+
 
 // Create UserModel
 export const UserModel = mongoose.model<UserInterface>("user", userSchema);

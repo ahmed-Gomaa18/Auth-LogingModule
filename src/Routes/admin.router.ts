@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import {findAllUsers, findUser, updateUser} from '../Controllers/admin.controller'
 
-import { authRoleMiddleware, authPermissionMiddleware } from "../Middlewares/auth.middleware";
+import { authRoleMiddleware } from "../Middlewares/auth.middleware";
 
 
 export const adminRouter = Router();
