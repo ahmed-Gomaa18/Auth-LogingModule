@@ -1,6 +1,6 @@
 import {
     signUp, sendMailConfirmation, signIn,
-    confrimEmailService, resendConfrimEmailService, signOut,
+    confirmEmailService, resendConfirmEmailService, signOut,
     generateResetPasswordLink, resetPassword, keycloakLoginService, keycloakSignupService, keycloakResetPasswordService
 } from "../Services/auth.service";
 import { NextFunction, Request, Response } from "express";
@@ -74,11 +74,11 @@ export async function Login(req: Request, res: Response) {
     }
 }
 
-export async function confrimEmail(req: Request, res: Response) {
+export async function confirmEmail(req: Request, res: Response) {
     try {
 
         const { token } = req.params;
-        const result = await confrimEmailService(token);
+        const result = await confirmEmailService(token);
         if (result.isSuccess) {
             // Render Front Page
 
@@ -104,11 +104,11 @@ export async function confrimEmail(req: Request, res: Response) {
     }
 }
 
-export async function resendConfrimEmail(req: Request, res: Response) {
+export async function resendConfirmEmail(req: Request, res: Response) {
     try {
 
         const { userId } = req.params;
-        const result = await resendConfrimEmailService(req, userId);
+        const result = await resendConfirmEmailService(req, userId);
         if (result.isSuccess) {
 
             //Log To Success

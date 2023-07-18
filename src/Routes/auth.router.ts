@@ -1,5 +1,7 @@
 import { Router } from "express";
+
 import { Register, Login, confrimEmail, resendConfrimEmail, Logout, httpLoginByGoogle, httpLoginByFacebook, requestResetPassword, resetPasswordController, loginByKeycloak, registerByKeycloak, resetPasswordByKeycloak } from "../Controllers/auth.controller";
+
 import { authRoleMiddleware } from "../Middlewares/auth.middleware";
 
 export const authRouter = Router();
@@ -16,6 +18,7 @@ if(process.env.AUTH_WITH == 'keycloak'){
     authRouter.post('/login', Login);
     authRouter.post('/register', Register);
 }
+
 
 
 
