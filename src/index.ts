@@ -10,7 +10,7 @@ import passport from './Config/passport';
 import {connect as connectToDB} from './DB/connect.db';
 // Routers
 import { authRouter } from './Routes/auth.router';
-import { thirdPartyRouter } from './Routes/thirdPartyCallback.route';
+import { thirdPartyRouter } from './Routes/thirdPartyCallback.router';
 import { adminRouter } from './Routes/admin.router';
 
 

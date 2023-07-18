@@ -20,7 +20,7 @@ const level = () => {
 const format = winston.format.combine(
   winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
   winston.format.printf(
-    ({timestamp, level, message, req}) => `${timestamp} ${level}: ${req ? `@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunctionName:(${req.route.stack[0].name}):` : ''}${req.user ? `@UserId(${req.user.userId}):` : ''} ${message}`,
+    ({timestamp, level, message, req}) => `${timestamp} ${level}: ${req ? `@Method:(${req.route.stack[0].method}) @Endpoint:(${req.route.path}) @FunctionName:(${req.route.stack[0].name}):` : ''}${req?.user ? `@UserId(${req.user.userId}):` : ''} ${message}`,
   ),
 )
 
@@ -32,7 +32,6 @@ const transports = [
     }),
     new winston.transports.File({ filename: 'Logs/info.log'}),
     
-    //new winston.transports.File({ filename: 'Logs/warn.log', level: 'warn' }),
 ]
 
 const Logger = winston.createLogger({

@@ -128,27 +128,41 @@ export async function signIn(email: string, password: string, rememberMe: boolea
                         if (rememberMe) {
                             expiresIn = '7d';
                         }
-                        // Function
-                        // Login Logic
-                        const token_id = uuidv4();
-                        const ResUserSessionToken = await createUserSession(token_id, user, expiresIn);
 
-                        if (ResUserSessionToken == "Faild") {
+                        // Login Logic Use session Config flag With Not use Session By Default
+                        const SESSION_CONFIG = process.env.SESSION_CONFIG || 'notUseSessionTable';
+
+                        if(SESSION_CONFIG == 'useSessionTable'){
+                            const token_id = uuidv4();
+                            const resUserSessionToken = await createUserSession(token_id, user, expiresIn);
+                            
+                            if (resUserSessionToken == "Faild") {
+                                return {
+                                    isSuccess: false,
+                                    message: 'Oops, Occurred a problem While login. Please Try Login again.',
+                                    status: 401,
+                                }
+                            }
+    
                             return {
-                                isSuccess: false,
-                                message: 'Oops, Occurred a problem While login. Please Try Login again.',
-                                status: 401,
+                                isSuccess: true,
+                                message: 'User Login Successfully.',
+                                status: 200,
+                                user: user,
+                                Token: resUserSessionToken
+                            }
+                        } else if (SESSION_CONFIG == 'notUseSessionTable'){
+
+                            const TokenJWT = await jwtSign({ id: user._id, role: user.role, permission: user.permission }, process.env.TOKEN_SIGNATURE, { expiresIn });
+
+                            return {
+                                isSuccess: true,
+                                message: 'User Login Successfully.',
+                                status: 200,
+                                user: user,
+                                Token: TokenJWT
                             }
                         }
-
-                        return {
-                            isSuccess: true,
-                            message: 'User Login Successfully.',
-                            status: 200,
-                            user: user,
-                            Token: ResUserSessionToken
-                        }
-
 
                     }
 
@@ -161,6 +175,7 @@ export async function signIn(email: string, password: string, rememberMe: boolea
 }
 
 export async function keycloakLoginService(email: string, password: string) {
+    // Try to login return void
     await keycloakAdmin.auth({
         username: email,
         password: password,
@@ -169,18 +184,37 @@ export async function keycloakLoginService(email: string, password: string) {
     });
 
     const keycloak_token = keycloakAdmin.accessToken;
+    
     const public_key = `-----BEGIN PUBLIC KEY-----\n${process.env.KEYCLOAK_PUBLIC_KEY}\n-----END PUBLIC KEY-----`;
+    
     const decoded_token = jwtVerify(keycloak_token, public_key, {
         algorithms: ['RS256']
     });
-    const {
-        given_name: firstName,
-        family_name: lastName,
-        email: _email
-    } = decoded_token;
-    const user = { firstName, lastName, email: _email };
-    const token = await jwtSign(user, process.env.TOKEN_SIGNATURE);
-    return { user, token };
+    if(!decoded_token){
+        return{
+            isSuccess: false,
+            message: 'In-valid OR expired Token.',
+            status: 401,
+        }
+    }else{
+        const {
+            given_name: firstName,
+            family_name: lastName,
+            email: _email} = decoded_token;
+            
+        const user = { firstName, lastName, email: _email };
+        
+        const token = await jwtSign(user, process.env.TOKEN_SIGNATURE);
+        return{
+            isSuccess: true,
+            message: 'User Login Successfully.',
+            status: 200,
+            user: user,
+            token: token
+        }
+
+    }
+
 }
 
 export async function keycloakSignupService(userData) {
@@ -201,22 +235,61 @@ export async function keycloakSignupService(userData) {
     }
     // Authenticate with admin in order to be able to register new user
     await keycloakAdmin.auth(KcAdminCredentials);
-    const userID = await keycloakAdmin.users.create(newUser);
-    return userID;
+
+    // Check if email already existing
+    let users = await keycloakAdmin.users.find({email: email, realm: process.env.KEYCLOAK_REALM_NAME});
+    
+    if(users.length >= 1){
+        return {
+            isSuccess: false,
+            message: 'Oops..This email is already existed.',
+            status: 400,
+        }
+    } else {
+        const userID = await keycloakAdmin.users.create(newUser);
+        // Get User
+        const user = await keycloakAdmin.users.findOne({id: userID.id, realm: process.env.KEYCLOAK_REALM_NAME})
+        
+        return {
+            isSuccess: true,
+            message: 'Signed up Successfully.',
+            status: 201,
+            user: user
+        }
+    }
+
 }
 
 export async function keycloakResetPasswordService(username, password) {
+    // Authenticate with admin in order to be able to Reset Password to user
     await keycloakAdmin.auth(KcAdminCredentials);
+    
     const users = await keycloakAdmin.users.find({ username });
-    const user = users[0];
-    await keycloakAdmin.users.resetPassword({
-        id: user.id,
-        credential: {
-          temporary: false,
-          type: 'password',
-          value: password
+    // Check User exist OR not
+    if(users.length >= 1){
+        await keycloakAdmin.users.resetPassword({
+            id: users[0].id,
+            credential: {
+              temporary: false,
+              type: 'password',
+              value: password
+            }
+        });
+
+        return {
+            isSuccess: true,
+            message: 'Password is Reset Successfully.',
+            status: 200
         }
-      });
+
+    } else {
+        return {
+            isSuccess: false,
+            message: 'This User not Existing.',
+            status: 400
+        }
+    }
+
 }
 
 
@@ -331,7 +404,9 @@ export async function signOut(userId: string, tokent_id: string) {
             status: 401,
         }
     }
-    else {
+    // Check if using Session table to end session and deactive OR not
+    
+    if(process.env.SESSION_CONFIG == 'useSessionTable'){
         // Close Session && Deactive Session
         const deactiveUserSession = await UserSession.findOneAndUpdate({ token_id: tokent_id, user_id: userId }, {
             active: false,
@@ -355,6 +430,15 @@ export async function signOut(userId: string, tokent_id: string) {
                 user: userLogOut
             }
 
+        }
+
+    } else {
+
+        return {
+            isSuccess: true,
+            message: 'User Logout Successfully.',
+            status: 200,
+            user: userLogOut
         }
     }
 }
@@ -505,14 +589,15 @@ async function unlockLoginTimeFun(user) {
             )} minutesss.`,
             status: 401,
         };
-    } else if (user.unlockLoginTime && Date.now() > user.unlockLoginTime) {
+    } else {//if (user.unlockLoginTime && Date.now() > user.unlockLoginTime) {
         user.failedLoginAttempts = 0;
         user.unlockLoginTime = undefined;
         await user.save();
-    } else if (user.failedLoginAttempts) {
-        user.failedLoginAttempts = 0;
-        await user.save();
     }
+    // else if (user.failedLoginAttempts) {
+    //     user.failedLoginAttempts = 0;
+    //     await user.save();
+    // }
 
     return user;
 }

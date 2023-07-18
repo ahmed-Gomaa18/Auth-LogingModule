@@ -131,7 +131,7 @@ export async function resendConfrimEmail(req: Request, res: Response) {
 
 export async function Logout(req: Request, res: Response) {
     const userId = req.user.userId;
-    const tokent_id = req.token_id;
+    const tokent_id = req?.token_id || 'empty';
     try {
         // call service
         const result = await signOut(userId, tokent_id);
@@ -158,32 +158,65 @@ export async function Logout(req: Request, res: Response) {
 }
 
 export async function loginByKeycloak(req: Request, res: Response, next: NextFunction) {
+    const { email, password } = req.body;
     try {
-        const { email, password } = req.body;
-        const { user, token } = await keycloakLoginService(email, password);
-        res.json({ message: 'ok', user, token })
+        const result = await keycloakLoginService(email, password);
+        if(result.isSuccess){
+            Logger.info(`This email(${email}) login Successfully`, {req});
+            return res.status(result.status).json({message: result.message, user: result.user, token: result.token});
+        }
+        else{
+            Logger.error(`This email(${email}) Tried To login with Error (${result.message})`, {req});
+            return res.status(result.status).json({message: result.message});
+        }
     } catch (error) {
-        return next(new AppError('invalid Credentials', 500))
+        //Logger.error(`This email(${email}) Tried To login with In-vaild Email OR Password.\nError(${error.message})`, {req});
+        //res.status(500).json({ message: "Catch Error" + ' In-vaild Email OR Password.' });
+        return next(new AppError('In-vaild Email OR Password.', 500));
+
     }
 }
 
-export async function signupByKeycloak(req: Request, res: Response, next: NextFunction) {
+export async function registerByKeycloak(req: Request, res: Response, next: NextFunction) {
+    const { email, firstName, lastName, password } = req.body;
     try {
-        const { email, firstName, lastName, password } = req.body;
-        await keycloakSignupService({ email, firstName, lastName, password });
-        res.json({ message: 'Signed up Successfully' });
+        
+        const result = await keycloakSignupService({ email, firstName, lastName, password });
+        
+        if (result.isSuccess){
+
+            Logger.info(`This email(${email}) Sign up Successfully`, {req});
+            return res.status(result.status).json({message: result.message, user: result.user});
+        
+        } else {
+
+            Logger.error(`Oops..This email(${email}) is already existing`, {req});
+            return res.status(result.status).json({message: result.message});
+
+        }
+
     } catch (error) {
-        return next(error)
+        Logger.error(`This email(${email}) Tried To Sign up By Keycloak.\nError(${error.message})`, {req});
+        res.status(500).json({ message: "Catch Error" + 'Oops.. Some Error Occurred While sign up' + error.message });
     }
 }
 
 export async function resetPasswordByKeycloak(req: Request, res: Response, next: NextFunction) {
+    const { email, password } = req.body;
     try {
-        const { email, password } = req.body;
-        await keycloakResetPasswordService(email, password );
-        res.json({ message: 'Password is Reset Successfully' })
+
+        const result = await keycloakResetPasswordService(email, password );
+        if(result.isSuccess){
+            Logger.info(`This email(${email}) reset password Successfully`, {req});
+            return res.status(result.status).json({message: result.message});
+        } else {
+            Logger.error(`Oops..This email(${email}) is not existing`, {req});
+            return res.status(result.status).json({message: result.message});
+        }
+
     } catch (error) {
-        return next(error)
+        Logger.error(`This email(${email}) Tried To Reset Password.\nError(${error.message})`, {req});
+        res.status(500).json({ message: "Catch Error" + 'Oops.. Some Error Occurred While reset password' + error.message });
     }
 }
 
