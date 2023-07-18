@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { Register, Login, confrimEmail, resendConfrimEmail, Logout, httpLoginByGoogle, httpLoginByFacebook, requestResetPassword, resetPasswordController, loginByKeycloak, registerByKeycloak, resetPasswordByKeycloak } from "../Controllers/auth.controller";
+import { Register, Login, confirmEmail, resendConfirmEmail, Logout, httpLoginByGoogle, httpLoginByFacebook, requestResetPassword, resetPasswordController, loginByKeycloak, registerByKeycloak, resetPasswordByKeycloak } from "../Controllers/auth.controller";
 
 import { authRoleMiddleware } from "../Middlewares/auth.middleware";
 
@@ -22,8 +22,8 @@ if(process.env.AUTH_WITH == 'keycloak'){
 
 
 
-authRouter.get('/confrimEmail/:token', confrimEmail);
-authRouter.get('/resendConfrimEmail/:userId', resendConfrimEmail);
+authRouter.get('/confrimEmail/:token', confirmEmail);
+authRouter.get('/resendConfrimEmail/:userId', resendConfirmEmail);
 
 authRouter.patch('/logout', authRoleMiddleware(['User', 'Admin']), Logout);
 
