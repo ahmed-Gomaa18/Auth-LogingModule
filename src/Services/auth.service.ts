@@ -65,7 +65,7 @@ export function sendMailConfirmation(user_id: string, email: string, req: Reques
     const message = `
     <h1>Welcome👋</h1>
     <h3>Thanks For your Time to Register with us.</h3>
-    <a href =${req.protocol}://${req.headers.host}/api/v1/auth/confrimEmail/${token}>
+    <a href =${req.protocol}://${req.headers.host}/api/v1/auth/confirmEmail/${token}>
     Please Follow This Link To Active your account.
     </a> 
     <br>
@@ -89,7 +89,7 @@ export async function signIn(email: string, password: string, rememberMe: boolea
         if (!user.confirm_email) {
             return {
                 isSuccess: false,
-                message: 'Please confrim your Email first.',
+                message: 'Please confirm your Email first.',
                 status: 400
             }
         }
@@ -220,7 +220,7 @@ export async function keycloakResetPasswordService(username, password) {
 }
 
 
-export async function confrimEmailService(token: string) {
+export async function confirmEmailService(token: string) {
 
 
     const decoded = jwtVerify(token, process.env.EMAIL_TOKEN);
@@ -246,7 +246,7 @@ export async function confrimEmailService(token: string) {
             if (user.confirm_email) {
                 return {
                     isSuccess: false,
-                    message: 'You already confrimed Please procced to login Pages.',
+                    message: 'You already confirmed Please procced to login Pages.',
                     status: 403,
                 }
             }
@@ -265,7 +265,7 @@ export async function confrimEmailService(token: string) {
     }
 }
 
-export async function resendConfrimEmailService(req: Request, userId: string) {
+export async function resendConfirmEmailService(req: Request, userId: string) {
     const user = await User.findById(userId);
 
     if (!user) {
@@ -298,7 +298,7 @@ export async function resendConfrimEmailService(req: Request, userId: string) {
             const message = `
             <h1>Welcome👋</h1>
             <h3>Thanks For your Time to Register with us.</h3>
-            <a href =${req.protocol}://${req.headers.host}/api/v1/auth/confrimEmail/${token}>
+            <a href =${req.protocol}://${req.headers.host}/api/v1/auth/confirmEmail/${token}>
             Please Follow This Link To Active your account.
             </a> 
             <br>

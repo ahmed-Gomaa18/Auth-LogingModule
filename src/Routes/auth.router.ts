@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Register, Login, confrimEmail, resendConfrimEmail, Logout, httpLoginByGoogle, httpLoginByFacebook, requestResetPassword, resetPasswordController, loginByKeycloak, signupByKeycloak, resetPasswordByKeycloak } from "../Controllers/auth.controller";
+import { Register, Login, confirmEmail, resendConfirmEmail, Logout, httpLoginByGoogle, httpLoginByFacebook, requestResetPassword, resetPasswordController, loginByKeycloak, signupByKeycloak, resetPasswordByKeycloak } from "../Controllers/auth.controller";
 import { authRoleMiddleware } from "../Middlewares/auth.middleware";
 
 export const authRouter = Router();
@@ -7,8 +7,8 @@ export const authRouter = Router();
 
 
 authRouter.post('/register', Register);
-authRouter.get('/confrimEmail/:token', confrimEmail);
-authRouter.get('/resendConfrimEmail/:userId', resendConfrimEmail);
+authRouter.get('/confirmEmail/:token', confirmEmail);
+authRouter.get('/resendConfirmEmail/:userId', resendConfirmEmail);
 authRouter.post('/login', Login);
 authRouter.patch('/logout', authRoleMiddleware(['User', 'Admin']), Logout);
 
