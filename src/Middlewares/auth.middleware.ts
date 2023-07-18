@@ -28,7 +28,13 @@ export function authRoleMiddleware(accessRoles: string[]){
                     if (!decoded) {
                         res.status(401).json({message:"In-valid Token Signature "});
 
-                    } else {
+                    }
+
+                    // Check if Use Session Table Or Not.
+                    const SESSION_CONFIG = process.env.SESSION_CONFIG || 'notUseSessionTable';
+
+                    if(SESSION_CONFIG == 'useSessionTable'){
+
                         // Check This Token in UserSession.
 
                         const currentSession = await UserSession.findOne({token_id: decoded.token_id, user_id: decoded.id})
@@ -53,7 +59,22 @@ export function authRoleMiddleware(accessRoles: string[]){
                             }
 
                         }
+
+                    } else if (SESSION_CONFIG == 'notUseSessionTable'){
+
+                        if (accessRoles.includes(decoded.role)) {
+                            // Add Info On Requset                            
+                            req.user = {userId: decoded.id, user_role: decoded.role ,user_permission: decoded.permission, auth: true}
+
+                            next();
+
+                        } else {
+                            res.status(401).json({message:"Not auth account"});
+
+                        }
+
                     }
+
                 }
             }
         

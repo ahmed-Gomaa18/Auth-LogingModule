@@ -335,3 +335,39 @@ error stack: Error: invalid Credentials
 error stack: Error: invalid Credentials
 2023-07-16 12:34:47 error: error: Error: invalid Credentials 
 error stack: Error: invalid Credentials
+2023-07-18 12:18:07 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): Please confrim your Email first.
+2023-07-18 12:29:25 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): Error Occurred While This User Try to LogIn email:(ahmedgomaa8998@gmail.com) Error: Cannot read properties of undefined (reading 'isSuccess').
+2023-07-18 13:43:07 error: @Method:(post) @Endpoint:(/login/keycloak) @FunctionName:(loginByKeycloak): error: Error: In-vaild Email OR Password.
+2023-07-18 13:43:21 error: @Method:(post) @Endpoint:(/login/keycloak) @FunctionName:(loginByKeycloak): error: Error: In-vaild Email OR Password.
+2023-07-18 13:43:29 error: @Method:(post) @Endpoint:(/login/keycloak) @FunctionName:(loginByKeycloak): error: Error: In-vaild Email OR Password.
+2023-07-18 13:45:50 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 401
+2023-07-18 14:03:42 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 401
+2023-07-18 14:06:01 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 401
+2023-07-18 14:11:27 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 404
+2023-07-18 14:55:21 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 409
+2023-07-18 14:59:17 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 409
+2023-07-18 15:00:08 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 409
+2023-07-18 15:04:50 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 401
+2023-07-18 15:11:58 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 409
+2023-07-18 15:16:07 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 409
+2023-07-18 15:17:39 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 409
+2023-07-18 15:18:02 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 409
+2023-07-18 15:18:26 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 409
+2023-07-18 15:18:46 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 409
+2023-07-18 15:19:09 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 409
+2023-07-18 15:19:26 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 409
+2023-07-18 15:20:06 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): error: Error: Request failed with status code 409
+2023-07-18 15:34:39 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): Oops..This email(ahmedgomaa8998@gmail.com) is already existing
+2023-07-18 15:37:56 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): Oops..This email(ahmedgomaa8998@gmail.com) is already existing
+2023-07-18 15:38:20 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): Oops..This email(undefined) is already existing
+2023-07-18 15:40:47 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): This email(ahmed@gmail.com) Tried To Sign up By Keycloak.
+Error(Request failed with status code 500)
+2023-07-18 15:55:29 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): Oops..This email(ahmedgomaa8998@gmail.com) is already existing
+2023-07-18 16:00:14 error: @Method:(post) @Endpoint:(/signup/keycloak) @FunctionName:(registerByKeycloak): Oops..This email(ahmedgomaa8998@gmail.com) is already existing
+2023-07-18 16:09:26 error: @Method:(post) @Endpoint:(/PasswordReset/keycloak) @FunctionName:(resetPasswordByKeycloak): This email(undefined) Tried To Reset Password.
+Error(Request failed with status code 400)
+2023-07-18 16:09:27 error: @Method:(post) @Endpoint:(/PasswordReset/keycloak) @FunctionName:(resetPasswordByKeycloak): This email(undefined) Tried To Reset Password.
+Error(Request failed with status code 400)
+2023-07-18 16:09:48 error: @Method:(post) @Endpoint:(/PasswordReset/keycloak) @FunctionName:(resetPasswordByKeycloak): Oops..This email(ahmedgomaa8sd998@gmail.com) is not existing
+2023-07-18 16:10:05 error: @Method:(post) @Endpoint:(/login/keycloak) @FunctionName:(loginByKeycloak): error: Error: In-vaild Email OR Password.
+2023-07-18 16:10:32 error: @Method:(post) @Endpoint:(/login/keycloak) @FunctionName:(loginByKeycloak): error: Error: In-vaild Email OR Password.
