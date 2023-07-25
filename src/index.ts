@@ -7,6 +7,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config(); 
 import passport from './Config/passport';
+import expressSession from 'express-session';
 import {connect as connectToDB} from './DB/connect.db';
 // Routers
 import { authRouter } from './Routes/auth.router';
@@ -27,6 +28,16 @@ app.use(cors({
     credentials : true,
     origin: [process.env.CLIENT_URL]
 }));
+
+// var memoryStore = new expressSession.MemoryStore();
+// app.use(
+//     expressSession({
+//         secret: 'another_long_secret',
+//         resave: false,
+//         saveUninitialized: true,
+//         store: memoryStore
+//     })
+// );
 
 app.use(compression());
 app.use(cookieParser());
@@ -75,3 +86,6 @@ app.use(defaultErrorHandler);
 server.listen(PORT, ()=>{
     console.log("Server Running on http://localhost:"+PORT);
 })
+
+// Unseal Key: XEg1C/hDJFwkdisFOekkti/kAAwXDgQeODFalpEJngE=
+// Root Token: hvs.uGPMaOCB5BN3LsEZL0UC8kDS

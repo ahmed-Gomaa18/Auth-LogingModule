@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { Register, Login, confirmEmail, resendConfirmEmail, Logout, httpLoginByGoogle, httpLoginByFacebook, requestResetPassword, resetPasswordController, loginByKeycloak, registerByKeycloak, resetPasswordByKeycloak } from "../Controllers/auth.controller";
+import { Register, Login, confirmEmail, resendConfirmEmail, Logout, httpLoginByGoogle, httpLoginByFacebook, requestResetPassword, resetPasswordController, loginByKeycloak, registerByKeycloak, resetPasswordByKeycloak, httpLoginByKeycloak } from "../Controllers/auth.controller";
 
 import { authRoleMiddleware } from "../Middlewares/auth.middleware";
 
@@ -32,6 +32,7 @@ authRouter.post('/passwordReset', resetPasswordController);
 
 authRouter.get("/google", httpLoginByGoogle);
 authRouter.get("/facebook", httpLoginByFacebook);
+authRouter.get("/keycloak", httpLoginByKeycloak);
 
 
 //authRouter.post("/PasswordReset/keycloak", resetPasswordByKeycloak);

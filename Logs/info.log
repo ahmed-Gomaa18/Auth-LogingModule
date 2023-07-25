@@ -235,3 +235,139 @@ Error(Request failed with status code 400)
 2023-07-18 16:15:14 info: @Method:(post) @Endpoint:(/login) @FunctionName:(loginByKeycloak): This email(ahmedgomaa8998@gmail.com) login Successfully
 2023-07-18 16:16:07 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
 2023-07-18 16:16:29 info: @Method:(post) @Endpoint:(/login) @FunctionName:(loginByKeycloak): This email(ahmedgomaa8998@gmail.com) login Successfully
+2023-07-23 01:48:07 error: @Method:(post) @Endpoint:(/register) @FunctionName:(registerByKeycloak): This email(b@admin.com) Tried To Sign up By Keycloak.
+Error(connect ECONNREFUSED 127.0.0.1:8080)
+2023-07-23 01:50:07 error: @Method:(post) @Endpoint:(/register) @FunctionName:(registerByKeycloak): This email(b@admin.com) Tried To Sign up By Keycloak.
+Error(connect ECONNREFUSED 127.0.0.1:8080)
+2023-07-23 01:50:12 error: @Method:(post) @Endpoint:(/register) @FunctionName:(registerByKeycloak): This email(b@admin.com) Tried To Sign up By Keycloak.
+Error(connect ECONNREFUSED 127.0.0.1:8080)
+2023-07-23 01:53:00 error: @Method:(post) @Endpoint:(/register) @FunctionName:(registerByKeycloak): This email(b@admin.com) Tried To Sign up By Keycloak.
+Error(connect ECONNREFUSED 127.0.0.1:8080)
+2023-07-23 01:53:47 error: @Method:(post) @Endpoint:(/register) @FunctionName:(registerByKeycloak): This email(b@admin.com) Tried To Sign up By Keycloak.
+Error(connect ECONNREFUSED 127.0.0.1:8080)
+2023-07-23 01:54:50 error: @Method:(post) @Endpoint:(/register) @FunctionName:(registerByKeycloak): This email(b@admin.com) Tried To Sign up By Keycloak.
+Error(connect ECONNREFUSED 127.0.0.1:8080)
+2023-07-23 01:55:11 info: @Method:(post) @Endpoint:(/register) @FunctionName:(Register): email: (b@admin.com) Created Successfully.
+2023-07-23 01:55:21 error:  This User id: (64bc5e4fe35c856bc1434ad4) email: (b@admin.com) an error occurred While a Sign up confirmation email was being sent.
+2023-07-23 02:24:32 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): In-vaild Email OR Password.
+2023-07-23 02:24:59 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): In-vaild Email OR Password.
+2023-07-24 01:15:31 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 01:16:58 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 01:20:04 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 01:21:12 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 01:21:12 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 01:22:08 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 01:23:50 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 01:23:51 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 01:26:20 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 01:32:27 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authorization_endpoint must be configured on the issuer
+2023-07-24 01:32:29 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authorization_endpoint must be configured on the issuer
+2023-07-24 01:35:26 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authorization_endpoint must be configured on the issuer
+2023-07-24 01:35:28 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authorization_endpoint must be configured on the issuer
+2023-07-24 01:38:58 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authorization_endpoint must be configured on the issuer
+2023-07-24 11:25:16 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: Error: Unknown authentication strategy "keycloak"
+2023-07-24 11:26:19 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: Error: Unknown authentication strategy "oidc"
+2023-07-24 11:27:01 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: Error: Unknown authentication strategy "oidc"
+2023-07-24 11:27:05 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: Error: Unknown authentication strategy "oidc"
+2023-07-24 12:01:10 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is Authenticated by Keycloak
+2023-07-24 12:08:39 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 12:08:39 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: Error: did not find expected authorization request details in session, req.session["oidc:localhost"] is undefined
+2023-07-24 12:09:11 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 12:09:11 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: Error: did not find expected authorization request details in session, req.session["oidc:localhost"] is undefined
+2023-07-24 12:09:43 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 12:09:43 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: Error: did not find expected authorization request details in session, req.session["oidc:localhost"] is undefined
+2023-07-24 12:10:31 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 12:10:31 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: Error: did not find expected authorization request details in session, req.session["oidc:localhost"] is undefined
+2023-07-24 12:10:32 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 12:10:32 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: Error: did not find expected authorization request details in session, req.session["oidc:localhost"] is undefined
+2023-07-24 12:10:47 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 12:10:47 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: Error: did not find expected authorization request details in session, req.session["oidc:localhost"] is undefined
+2023-07-24 12:13:06 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is Authenticated by Keycloak
+2023-07-24 12:13:45 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 12:13:45 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: Error: did not find expected authorization request details in session, req.session["oidc:localhost"] is undefined
+2023-07-24 12:19:13 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is Authenticated by Keycloak
+2023-07-24 14:33:50 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: Error: Unknown authentication strategy "keycloak-bearer"
+2023-07-24 15:12:04 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 15:12:04 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: InternalOAuthError: Failed to obtain access token (status: 400 data: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>400 Bad Request</title>
+</head><body>
+<h1>Bad Request</h1>
+<p>Your browser sent a request that this server could not understand.<br />
+</p>
+<hr>
+<address>Apache/2.4.41 (Ubuntu) Server at 127.0.1.1 Port 80</address>
+</body></html>
+)
+2023-07-24 15:13:01 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 15:13:01 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: InternalOAuthError: Failed to obtain access token (status: 400 data: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>400 Bad Request</title>
+</head><body>
+<h1>Bad Request</h1>
+<p>Your browser sent a request that this server could not understand.<br />
+</p>
+<hr>
+<address>Apache/2.4.41 (Ubuntu) Server at 127.0.1.1 Port 80</address>
+</body></html>
+)
+2023-07-24 15:15:28 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 15:15:28 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: InternalOAuthError: Failed to obtain access token (status: 400 data: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>400 Bad Request</title>
+</head><body>
+<h1>Bad Request</h1>
+<p>Your browser sent a request that this server could not understand.<br />
+</p>
+<hr>
+<address>Apache/2.4.41 (Ubuntu) Server at 127.0.1.1 Port 80</address>
+</body></html>
+)
+2023-07-24 15:16:38 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 15:16:38 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: InternalOAuthError: Failed to obtain access token (status: 400 data: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>400 Bad Request</title>
+</head><body>
+<h1>Bad Request</h1>
+<p>Your browser sent a request that this server could not understand.<br />
+</p>
+<hr>
+<address>Apache/2.4.41 (Ubuntu) Server at 127.0.1.1 Port 80</address>
+</body></html>
+)
+2023-07-24 15:16:54 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 15:16:54 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: InternalOAuthError: Failed to obtain access token (status: 400 data: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>400 Bad Request</title>
+</head><body>
+<h1>Bad Request</h1>
+<p>Your browser sent a request that this server could not understand.<br />
+</p>
+<hr>
+<address>Apache/2.4.41 (Ubuntu) Server at 127.0.1.1 Port 80</address>
+</body></html>
+)
+2023-07-24 15:18:58 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 15:18:58 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: Error: did not find expected authorization request details in session, req.session["oidc:localhost"] is undefined
+2023-07-24 15:20:35 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 15:20:35 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: Error: did not find expected authorization request details in session, req.session["oidc:localhost"] is undefined
+2023-07-24 15:20:39 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 15:20:39 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: Error: did not find expected authorization request details in session, req.session["oidc:localhost"] is undefined
+2023-07-24 15:20:51 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is Authenticated by Keycloak
+2023-07-24 15:22:20 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is Authenticated by Keycloak
+2023-07-24 15:23:12 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is failed to Authenticated by Keycloak
+2023-07-24 15:23:12 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): error: TypeError: authentication requires session support
+2023-07-24 15:23:28 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 15:32:40 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 15:33:32 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 15:34:46 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is Authenticated by Keycloak
+2023-07-24 15:35:07 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is Authenticated by Keycloak
+2023-07-24 15:35:34 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is Authenticated by Keycloak
+2023-07-24 15:37:07 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is Authenticated by Keycloak
+2023-07-24 15:38:08 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is Authenticated by Keycloak
+2023-07-24 15:38:59 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is Authenticated by Keycloak
+2023-07-24 15:40:06 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (undefined) is Authenticated by Keycloak
+2023-07-24 15:41:40 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 19:28:58 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 19:28:58 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
+2023-07-24 19:33:12 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(httpLoginByKeycloak): error: TypeError: authentication requires session support
