@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { Register, Login, confirmEmail, resendConfirmEmail, Logout, authenticateByGoogle, authenticateByFacebook, requestResetPassword, resetPassword, authenticateByKeycloak, logoutByKeycloak } from "../Controllers/auth.controller";
 
+
 import { authRoleMiddleware } from "../Middlewares/auth.middleware";
 
 export const authRouter = Router();
@@ -9,6 +10,7 @@ export const authRouter = Router();
 
 authRouter.post('/login', Login);
 authRouter.post('/register', Register);
+
 authRouter.patch('/logout', authRoleMiddleware(['User', 'Admin']), Logout);
 
 authRouter.get('/confirmEmail/:token', confirmEmail);
