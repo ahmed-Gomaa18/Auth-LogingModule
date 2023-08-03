@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import {findAllUsers, findUser, updateUser} from '../Controllers/admin.controller'
 
-import { authRoleMiddleware } from "../Middlewares/auth.middleware";
+import { authPermissionMiddleware, authRoleMiddleware } from "../Middlewares/auth.middleware";
 
 
 export const adminRouter = Router();
@@ -12,6 +12,6 @@ export const adminRouter = Router();
 adminRouter.use(authRoleMiddleware(['Admin']));
 
 
-adminRouter.get('/users', findAllUsers);
+adminRouter.get('/users', authPermissionMiddleware('findAllUsers'), findAllUsers);
 adminRouter.get('/user/:id', findUser);
 adminRouter.patch('/user/:id', updateUser);

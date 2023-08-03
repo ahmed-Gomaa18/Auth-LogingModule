@@ -235,3 +235,159 @@ Error(Request failed with status code 400)
 2023-07-18 16:15:14 info: @Method:(post) @Endpoint:(/login) @FunctionName:(loginByKeycloak): This email(ahmedgomaa8998@gmail.com) login Successfully
 2023-07-18 16:16:07 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
 2023-07-18 16:16:29 info: @Method:(post) @Endpoint:(/login) @FunctionName:(loginByKeycloak): This email(ahmedgomaa8998@gmail.com) login Successfully
+2023-07-26 17:19:55 error: @Method:(get) @Endpoint:(/keycloak) @FunctionName:(loginByKeycloak): error: Error: In-vaild Email OR Password.
+2023-07-30 12:05:49 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (6a491695-6f2d-4b03-aaca-964cfd538aed) is Authenticated by Keycloak
+2023-07-30 12:06:58 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (6a491695-6f2d-4b03-aaca-964cfd538aed) is Authenticated by Keycloak
+2023-07-30 12:06:59 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (6a491695-6f2d-4b03-aaca-964cfd538aed) is Authenticated by Keycloak
+2023-07-30 12:07:43 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (65a0d644-8559-4add-944a-ee9665a4de3c) is Authenticated by Keycloak
+2023-07-30 12:10:45 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (e17dc020-3ee6-46f2-b15b-7af1b481dc9c) is Authenticated by Keycloak
+2023-07-30 12:12:15 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (e17dc020-3ee6-46f2-b15b-7af1b481dc9c) is Authenticated by Keycloak
+2023-07-30 12:13:47 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (65a0d644-8559-4add-944a-ee9665a4de3c) is Authenticated by Keycloak
+2023-07-30 12:15:52 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (99409e65-72e7-4ee4-a296-baedfc7fcccd) is Authenticated by Keycloak
+2023-07-30 12:17:12 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (a4dc6a19-fceb-45e6-800c-72f30da2f21a) is Authenticated by Keycloak
+2023-07-30 12:19:45 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (f55e1374-1a65-45c0-8e98-c10eec7fac2b) is Authenticated by Keycloak
+2023-07-30 12:20:40 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (f55e1374-1a65-45c0-8e98-c10eec7fac2b) is Authenticated by Keycloak
+2023-07-30 13:54:10 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(httpCallbackKeycloakURL): This UserId (8d2692b8-01b7-4cbc-9772-e024e72dd133) is Authenticated by Keycloak
+2023-07-30 16:23:06 info: @Method:(get) @Endpoint:(/resendConfrimEmail/:userId) @FunctionName:(resendConfirmEmail): This User id: (64ac0d61a91496fc5eeaf467) Resend Confirmed Email Successfully.
+2023-07-30 16:23:10 info:  This User email: (ahmedgomaa8998@gmail.com) was been sent Successfully.
+2023-07-30 16:25:35 info: @Method:(get) @Endpoint:(/confirmEmail/:token) @FunctionName:(confirmEmail): This User id: (64ac0d61a91496fc5eeaf467) Confirmed Email Successfully.
+2023-07-30 16:25:51 error: @Method:(get) @Endpoint:(/resendConfirmEmail/:userId) @FunctionName:(resendConfirmEmail): This User id: (64ac0d61a91496fc5eeaf467) You already confirmed Please proceed to login Page.
+2023-07-30 16:28:04 info: @Method:(get) @Endpoint:(/resendConfirmEmail/:userId) @FunctionName:(resendConfirmEmail): This User id: (64ac0d61a91496fc5eeaf467) Resend Confirmed Email Successfully.
+2023-07-30 16:28:06 info:  This User email: (ahmedgomaa8998@gmail.com) was been sent Successfully.
+2023-07-30 16:28:56 info: @Method:(get) @Endpoint:(/resendConfirmEmail/:userId) @FunctionName:(resendConfirmEmail): This User id: (64ac0d61a91496fc5eeaf467) Resend Confirmed Email Successfully.
+2023-07-30 16:28:58 info:  This User email: (ahmedgomaa8998@gmail.com) was been sent Successfully.
+2023-07-31 12:14:09 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(callbackKeycloakURL): Error Occurred While Authenticating using Keycloak, Error: invalid signature.
+2023-07-31 12:15:37 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(callbackKeycloakURL): Error Occurred While Authenticating using Keycloak, Error: invalid signature.
+2023-07-31 12:15:39 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(callbackKeycloakURL): Error Occurred While Authenticating using Keycloak, Error: invalid signature.
+2023-07-31 14:17:22 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): Please confirm your Email first.
+2023-07-31 14:18:15 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-31 14:20:09 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 14:20:53 error: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): Occurred Error invalid token
+2023-07-31 14:21:14 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 14:41:04 error: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): Occurred Error Cannot read properties of undefined (reading 'startsWith')
+2023-07-31 14:43:13 error: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): Occurred Error Cannot read properties of undefined (reading 'startsWith')
+2023-07-31 14:56:09 error: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): Occurred Error Unauthorized Access.
+2023-07-31 14:58:34 error: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): Occurred Error Unauthorized Access.
+2023-07-31 15:02:55 error: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): Occurred Error Unauthorized Access.
+2023-07-31 15:03:55 error: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): Occurred Error Unauthorized Access.
+2023-07-31 15:04:56 error: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): Occurred Error Unauthorized Access.
+2023-07-31 15:05:38 error: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): Occurred Error Unauthorized Access.
+2023-07-31 15:06:22 error: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): Occurred Error Unauthorized Access.
+2023-07-31 15:08:39 error: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): Occurred Error Unauthorized Access.
+2023-07-31 15:10:51 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 15:13:31 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 15:14:29 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 15:18:17 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 15:21:47 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 15:31:18 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 15:40:24 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 15:58:50 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 15:59:46 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:16:49 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:17:06 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:17:33 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:18:17 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:19:04 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:19:29 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:19:31 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:20:27 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:21:01 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:21:13 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:21:35 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:21:55 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:22:10 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:22:13 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:22:15 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:22:18 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:22:20 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:37:57 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:38:23 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:42:17 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:43:01 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 17:43:20 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 18:10:07 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(callbackKeycloakURL): Error Occurred While Authenticating using Keycloak, Error: invalid signature.
+2023-07-31 18:10:53 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(callbackKeycloakURL): Error Occurred While Authenticating using Keycloak, Error: invalid signature.
+2023-07-31 18:11:58 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(callbackKeycloakURL): Error Occurred While Authenticating using Keycloak, Error: invalid signature.
+2023-07-31 18:13:36 error: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(callbackKeycloakURL): Error Occurred While Authenticating using Keycloak, Error: invalid signature.
+2023-07-31 18:17:09 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(callbackKeycloakURL): This UserId (ac5acc53-b104-42f0-b222-63e008f3f9be) is Authenticated by Keycloak
+2023-07-31 18:18:16 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(callbackKeycloakURL): This UserId (6683ea0a-e42a-4569-90fe-e90df947b16e) is Authenticated by Keycloak
+2023-07-31 18:18:28 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(callbackKeycloakURL): This UserId (6683ea0a-e42a-4569-90fe-e90df947b16e) is Authenticated by Keycloak
+2023-07-31 18:31:43 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): In-valid Email Or Password.
+2023-07-31 18:32:43 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-31 18:43:02 error: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): Occurred Error jwt malformed
+2023-07-31 18:44:05 error: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): Occurred Error jwt malformed
+2023-07-31 18:44:10 error: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): Occurred Error jwt malformed
+2023-07-31 18:57:11 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 18:57:30 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:01:07 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:01:13 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:01:36 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): Error Occurred While This User Try to LogIn email:(ahmedgomaa8998@gmail.com) Error: user validation failed: role: `uuu` is not a valid enum value for path `role`..
+2023-07-31 19:01:55 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-31 19:01:57 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:02:35 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-31 19:02:37 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:03:07 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:03:17 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:03:23 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:03:42 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:03:53 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:21:35 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:22:39 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:22:42 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:22:45 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:23:15 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:23:20 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:23:22 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 19:23:27 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 20:09:39 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-31 20:09:41 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 20:11:44 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-31 20:11:46 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 20:13:43 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-07-31 20:13:45 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 20:22:34 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-07-31 20:23:54 info: @Method:(post) @Endpoint:(/verifyUser) @FunctionName:(verifyUser): User is verified Successfully id:: (64ac0d61a91496fc5eeaf467) Successfully.
+2023-08-02 14:53:40 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-02 15:35:51 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-02 16:02:20 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ac0d61a91496fc5eeaf467) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-02 16:10:13 info: @Method:(post) @Endpoint:(/register) @FunctionName:(Register): email: (ahmedgomaa8998@gmail.com) Created Successfully.
+2023-08-02 16:10:16 info:  This User email: (ahmedgomaa8998@gmail.com) was been sent Successfully.
+2023-08-02 16:10:38 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): Please confirm your Email first.
+2023-08-02 16:10:50 info: @Method:(get) @Endpoint:(/confirmEmail/:token) @FunctionName:(confirmEmail): This User id: (64ca55b51a0186f8c2eae35b) Confirmed Email Successfully.
+2023-08-02 16:13:50 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-02 16:14:11 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): In-valid Email Or Password.
+2023-08-02 16:14:50 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): In-valid Email Or Password.
+2023-08-02 16:14:52 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): Too many failed login attempts. Please try again after 59 minutes.
+2023-08-02 16:15:04 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): Too many failed login attempts. Please try again after 59 minutesss.
+2023-08-02 16:15:40 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-02 16:17:25 info: @Method:(get) @Endpoint:(/google/callback) @FunctionName:(callbackGoogleURL): This UserId (64ca55b51a0186f8c2eae35b) is Authenticated by Google
+2023-08-02 16:19:09 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(callbackKeycloakURL): This UserId (f6a7d89e-6e61-415f-a824-aef6e31199f1) is Authenticated by Keycloak
+2023-08-02 16:21:03 info: @Method:(get) @Endpoint:(/keycloak/callback) @FunctionName:(callbackKeycloakURL): This UserId (bda8ca83-2590-400f-879e-82772975b1f0) is Authenticated by Keycloak
+2023-08-02 16:28:16 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-02 16:29:29 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-02 16:30:19 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-02 16:31:58 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-02 16:32:57 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-02 16:36:38 info: @Method:(get) @Endpoint:(/google/callback) @FunctionName:(callbackGoogleURL): This UserId (64ca55b51a0186f8c2eae35b) is Authenticated by Google
+2023-08-03 11:46:29 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-03 13:10:36 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-03 13:11:22 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-03 13:13:04 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-03 13:14:10 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-03 13:15:42 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-03 13:16:11 info: @Method:(get) @Endpoint:(/google/callback) @FunctionName:(callbackGoogleURL): This UserId (64ca55b51a0186f8c2eae35b) is Authenticated by Google
+2023-08-03 14:00:05 info: @Method:(post) @Endpoint:(/register) @FunctionName:(Register): email: (ahmed@gmail.com) Created Successfully.
+2023-08-03 14:00:19 error:  This User id: (64cb88b5c1fd1ecef7ddadc8) email: (ahmed@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-03 14:00:52 info: @Method:(get) @Endpoint:(/google/callback) @FunctionName:(callbackGoogleURL): This UserId (64ca55b51a0186f8c2eae35b) is Authenticated by Google
+2023-08-03 14:05:08 info: @Method:(get) @Endpoint:(/google/callback) @FunctionName:(callbackGoogleURL): This UserId (64ca55b51a0186f8c2eae35b) is Authenticated by Google
+2023-08-03 14:05:49 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-03 14:07:26 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-03 14:14:41 info: @Method:(get) @Endpoint:(/google/callback) @FunctionName:(callbackGoogleURL): This UserId (64ca55b51a0186f8c2eae35b) is Authenticated by Google
+2023-08-03 14:16:17 info: @Method:(get) @Endpoint:(/google/callback) @FunctionName:(callbackGoogleURL): This UserId (64ca55b51a0186f8c2eae35b) is Authenticated by Google
+2023-08-03 15:28:10 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-03 15:34:31 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-03 16:06:41 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-03 16:08:05 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-03 16:12:14 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-03 17:37:00 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-03 17:40:43 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
