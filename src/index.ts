@@ -1,4 +1,4 @@
-import express, {Request, Response, NextFunction, Router} from 'express';
+import express, {Request, Response, NextFunction, Router, query} from 'express';
 import http from 'http';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
@@ -12,11 +12,10 @@ import {connect as connectToDB} from './DB/connect.db';
 import { authRouter } from './Routes/auth.router';
 import { thirdPartyRouter } from './Routes/thirdPartyCallback.router';
 import { adminRouter } from './Routes/admin.router';
+import {userRouter} from './Routes/user.router';
 
 
 import defaultErrorHandler from './Utils/defaultErrorHandler';
-
-
 
 const app = express();
 
@@ -25,7 +24,7 @@ connectToDB()
 
 app.use(cors({
     credentials : true,
-    origin: [process.env.CLIENT_URL]
+    origin: [process.env.CLIENT_URL, process.env.CLIENT_URL_2]
 }));
 
 app.use(compression());
@@ -57,8 +56,11 @@ app.use('/auth', thirdPartyRouter);
 // Dashboard Router
 app.use('/api/v1/admin', adminRouter);
 
-// Router
+// Auth Router
 app.use('/api/v1/auth', authRouter);
+
+// User Router
+app.use('/api/v1/user', userRouter);
 
 //
 const server = http.createServer(app);

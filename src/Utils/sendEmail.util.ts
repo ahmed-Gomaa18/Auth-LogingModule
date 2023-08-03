@@ -12,7 +12,7 @@ export function sendEmail(to: string, subject: string, message: string, id: stri
         requireTLS:true,
         auth: {
           user: process.env.EMAIL_USERNAME, // generated ethereal user
-          pass: process.env.EMAIL_PASSWORD//SENDER_PASSWORD, // generated ethereal password
+          pass: 'ahmedGomaa123'//process.env.EMAIL_PASSWORD//SENDER_PASSWORD, // generated ethereal password
         },
         // connectionTimeout: 10000,
         // debug: true
