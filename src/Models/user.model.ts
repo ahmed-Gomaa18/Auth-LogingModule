@@ -111,4 +111,4 @@ userSchema.methods.checkPasswordIsValid = async function (password: string) : Pr
 
 
 // Create UserModel
-export const UserModel = mongoose.model<UserInterface>("user", userSchema);
+export const UserModel = mongoose.model<UserInterface>("authUsers", userSchema);

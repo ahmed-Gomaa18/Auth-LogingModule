@@ -391,3 +391,46 @@ Error(Request failed with status code 400)
 2023-08-03 16:12:14 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
 2023-08-03 17:37:00 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
 2023-08-03 17:40:43 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64ca55b51a0186f8c2eae35b) email: (ahmedgomaa8998@gmail.com) LogIn Successfully.
+2023-08-07 11:40:19 info: @Method:(post) @Endpoint:(/register) @FunctionName:(Register): email: (ahmedreda@gmail.com) Created Successfully.
+2023-08-07 11:40:32 error:  This User id: (64d0bc03f0457283a2b982bb) email: (ahmedreda@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-07 11:41:25 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0bc03f0457283a2b982bb) email: (ahmedreda@gmail.com) LogIn Successfully.
+2023-08-07 11:43:33 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0bc03f0457283a2b982bb) email: (ahmedreda@gmail.com) LogIn Successfully.
+2023-08-07 11:45:25 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0bc03f0457283a2b982bb) email: (ahmedreda@gmail.com) LogIn Successfully.
+2023-08-07 11:46:02 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0bc03f0457283a2b982bb) email: (ahmedreda@gmail.com) LogIn Successfully.
+2023-08-07 11:50:14 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): Error Occurred While This User Try to LogIn email:(ahmedreda@gmail.com) Error: user validation failed: role: `admin` is not a valid enum value for path `role`..
+2023-08-07 11:50:32 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0bc03f0457283a2b982bb) email: (ahmedreda@gmail.com) LogIn Successfully.
+2023-08-07 12:13:03 info: @Method:(post) @Endpoint:(/register) @FunctionName:(Register): email: (ahmedmedhat@gmail.com) Created Successfully.
+2023-08-07 12:13:14 error:  This User id: (64d0c3af29b7d0251cf0bd2c) email: (ahmedmedhat@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-07 12:14:17 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0c3af29b7d0251cf0bd2c) email: (ahmedmedhat@gmail.com) LogIn Successfully.
+2023-08-07 13:01:44 info: @Method:(post) @Endpoint:(/register) @FunctionName:(Register): email: (mahmoudfady@gmail.com) Created Successfully.
+2023-08-07 13:01:55 error:  This User id: (64d0cf1729b7d0251cf0bd30) email: (mahmoudfady@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-07 13:02:26 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): Please confirm your Email first.
+2023-08-07 13:03:05 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0cf1729b7d0251cf0bd30) email: (mahmoudfady@gmail.com) LogIn Successfully.
+2023-08-07 13:27:40 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0cf1729b7d0251cf0bd30) email: (mahmoudfady@gmail.com) LogIn Successfully.
+2023-08-07 13:27:49 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0cf1729b7d0251cf0bd30) email: (mahmoudfady@gmail.com) LogIn Successfully.
+2023-08-07 15:31:34 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0c3af29b7d0251cf0bd2c) email: (ahmedmedhat@gmail.com) LogIn Successfully.
+2023-08-07 15:33:33 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0cf1729b7d0251cf0bd30) email: (mahmoudfady@gmail.com) LogIn Successfully.
+2023-08-07 15:35:38 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0cf1729b7d0251cf0bd30) email: (mahmoudfady@gmail.com) LogIn Successfully.
+2023-08-07 15:38:08 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0cf1729b7d0251cf0bd30) email: (mahmoudfady@gmail.com) LogIn Successfully.
+2023-08-07 16:09:31 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0cf1729b7d0251cf0bd30) email: (mahmoudfady@gmail.com) LogIn Successfully.
+2023-08-07 16:22:20 info: @Method:(post) @Endpoint:(/register) @FunctionName:(Register): email: (ahmedmedhat.reda@gmail.com) Created Successfully.
+2023-08-07 16:22:30 error:  This User id: (64d0fe1929b7d0251cf0bd43) email: (ahmedmedhat.reda@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-07 16:24:45 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0c3af29b7d0251cf0bd2c) email: (ahmedmedhat@gmail.com) LogIn Successfully.
+2023-08-07 16:27:39 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0cf1729b7d0251cf0bd30) email: (mahmoudfady@gmail.com) LogIn Successfully.
+2023-08-07 16:27:41 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0cf1729b7d0251cf0bd30) email: (mahmoudfady@gmail.com) LogIn Successfully.
+2023-08-07 16:37:56 info: @Method:(post) @Endpoint:(/register) @FunctionName:(Register): email: (ahmedmedhat.reda@gmail.com) Created Successfully.
+2023-08-07 16:38:06 error:  This User id: (64d101c37c5046cfd6ace8fc) email: (ahmedmedhat.reda@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-07 16:40:09 info: @Method:(post) @Endpoint:(/register) @FunctionName:(Register): email: (ahmedmedhat.reda@gmail.com) Created Successfully.
+2023-08-07 16:40:11 error:  This User id: (64d10248afc91a448a4baaff) email: (ahmedmedhat.reda@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-07 16:42:05 info: @Method:(post) @Endpoint:(/register) @FunctionName:(Register): email: (be4oy.hani@gmail.com) Created Successfully.
+2023-08-07 16:42:07 info:  This User email: (be4oy.hani@gmail.com) was been sent Successfully.
+2023-08-07 16:46:10 info: @Method:(post) @Endpoint:(/requestResetPassword) @FunctionName:(requestResetPassword): This User id: (64d10248afc91a448a4baaff) email: (ahmedmedhat.reda@gmail.com) Want To Reset Password.
+2023-08-07 16:46:12 info:  This User email: (ahmedmedhat.reda@gmail.com) was been sent Successfully.
+2023-08-07 17:21:21 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0c3af29b7d0251cf0bd2c) email: (ahmedmedhat@gmail.com) LogIn Successfully.
+2023-08-07 17:23:38 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0c3af29b7d0251cf0bd2c) email: (ahmedmedhat@gmail.com) LogIn Successfully.
+2023-08-07 17:47:35 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0c3af29b7d0251cf0bd2c) email: (ahmedmedhat@gmail.com) LogIn Successfully.
+2023-08-07 17:48:30 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0cf1729b7d0251cf0bd30) email: (mahmoudfady@gmail.com) LogIn Successfully.
+2023-08-07 17:59:19 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0c3af29b7d0251cf0bd2c) email: (ahmedmedhat@gmail.com) LogIn Successfully.
+2023-08-07 18:04:25 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0c3af29b7d0251cf0bd2c) email: (ahmedmedhat@gmail.com) LogIn Successfully.
+2023-08-07 18:08:41 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0c3af29b7d0251cf0bd2c) email: (ahmedmedhat@gmail.com) LogIn Successfully.
+2023-08-07 18:20:18 info: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): UserId: (64d0cf1729b7d0251cf0bd30) email: (mahmoudfady@gmail.com) LogIn Successfully.

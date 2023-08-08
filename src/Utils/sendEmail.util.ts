@@ -11,8 +11,8 @@ export function sendEmail(to: string, subject: string, message: string, id: stri
         secure: false, // true for 465, false for other ports
         requireTLS:true,
         auth: {
-          user: process.env.EMAIL_USERNAME, // generated ethereal user
-          pass: 'ahmedGomaa123'//process.env.EMAIL_PASSWORD//SENDER_PASSWORD, // generated ethereal password
+          user: process.env.SENDER_EMAIL, // generated ethereal user
+          pass: process.env.SENDER_PASSWORD//SENDER_PASSWORD, // generated ethereal password
         },
         // connectionTimeout: 10000,
         // debug: true
@@ -20,7 +20,7 @@ export function sendEmail(to: string, subject: string, message: string, id: stri
 
     const mailOption = {
 
-            from: `"Fred Foo 👻" <${process.env.EMAIL_USERNAME}>`, 
+            from: `"Fred Foo 👻" <${process.env.SENDER_EMAIL}>`, 
             to: to, 
             subject: subject, 
             text: subject,
