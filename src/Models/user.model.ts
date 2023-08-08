@@ -1,81 +1,78 @@
-import mongoose, {Schema, Document} from "mongoose";
-import bcrypt, {compare} from 'bcryptjs';
+import mongoose, { Schema, Document } from "mongoose";
+import bcrypt, { compare } from "bcryptjs";
 
 // Define User Interface Schema
-export interface UserInterface extends Document{
-    firstName: string;
-    lastName: string;
-    email: string;
-    role: string;
-    permission: string[];
-    confirm_email: boolean;
-    isBlocked: boolean;
-    lastSeen: Date;
-    googleToken: string,
-    githubToken: string,
-    facebookToken: string,
-    authByThirdParty: boolean,
-    unlockLoginTime: Date;
-    failedLoginAttempts: number;
-    password: string;
-    checkPasswordIsValid(password: string): boolean;
+export interface UserInterface extends Document {
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
+  permissions: string[];
+  confirm_email: boolean;
+  isBlocked: boolean;
+  lastSeen: Date;
+  googleToken: string;
+  githubToken: string;
+  facebookToken: string;
+  authByThirdParty: boolean;
+  unlockLoginTime: Date;
+  failedLoginAttempts: number;
+  password: string;
+  checkPasswordIsValid(password: string): boolean;
 }
 
 // Define Schema
-const userSchema: Schema<UserInterface> = new mongoose.Schema({
+const userSchema: Schema<UserInterface> = new mongoose.Schema(
+  {
     firstName: {
-        type: String, 
-        required: true
+      type: String,
+      required: true,
     },
     lastName: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     email: {
-        type: String, 
-        required: [true, 'email is required'], 
-        match: [/^\S+@\S+\.\S+$/, 'Please fill a valid email address'], 
-        unique: true
+      type: String,
+      //required: [true, "email is required"],
+      match: [/^\S+@\S+\.\S+$/, "Please fill a valid email address"],
+      unique: true,
     },
     role: {
-        type: String, 
-        default: 'User', 
-        required: true, 
-        enum: ['Admin', 'User']
+      type: String,
+      default: "User",
+      required: true,
+      enum: ["Admin", "User", "Manager", "Hr"],
     },
-    permission: [
-        { 
-            type: String 
-        }
-    ],
+    permissions: [String],
     confirm_email: {
-        type: Boolean,
-        required: true,
-        default: false
+      type: Boolean,
+      required: true,
+      default: false,
     },
     isBlocked: {
-        type: Boolean,
-        required: true,
-        default: false
+      type: Boolean,
+      required: true,
+      default: false,
     },
     lastSeen: {
-        type: Date
+      type: Date,
     },
     googleToken: {
-        type: String,
-        required: false
+      type: String,
+      required: false,
     },
     githubToken: {
-        type: String,
-        required: false
+      type: String,
+      required: false,
     },
     facebookToken: {
-        type: String,
-        required: false
+      type: String,
+      required: false,
     },
     authByThirdParty: {
-        type: Boolean,
-        default: false
+      type: Boolean,
+      default: false,
     },
     unlockLoginTime: Date,
     failedLoginAttempts: {
@@ -83,23 +80,23 @@ const userSchema: Schema<UserInterface> = new mongoose.Schema({
       default: 0,
     },
     password: {
-        type: String, 
-        required: true,
-        
-    }
-},
-{ 
-    timestamps: true 
-});
-
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 // Add Method To Check Password Validate
-userSchema.methods.checkPasswordIsValid = async function (password: string) : Promise<boolean> {
-    const RES = await compare(password, this.password);
+userSchema.methods.checkPasswordIsValid = async function (
+  password: string
+): Promise<boolean> {
+  const RES = await compare(password, this.password);
 
-    return RES;
+  return RES;
 };
-
 
 // Hash Password Pre Save
 // userSchema.pre('save', async function (next) {
@@ -107,8 +104,8 @@ userSchema.methods.checkPasswordIsValid = async function (password: string) : Pr
 //     next();
 // });
 
-
-
-
 // Create UserModel
-export const UserModel = mongoose.model<UserInterface>("authUsers", userSchema);
+export const UserModel = mongoose.model<UserInterface>(
+  "authUsersCasl",
+  userSchema
+);

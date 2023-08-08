@@ -411,3 +411,13 @@ Error(Request failed with status code 400)
 2023-08-07 16:22:30 error:  This User id: (64d0fe1929b7d0251cf0bd43) email: (ahmedmedhat.reda@gmail.com) an error occurred While a Sign up confirmation email was being sent.
 2023-08-07 16:38:06 error:  This User id: (64d101c37c5046cfd6ace8fc) email: (ahmedmedhat.reda@gmail.com) an error occurred While a Sign up confirmation email was being sent.
 2023-08-07 16:40:11 error:  This User id: (64d10248afc91a448a4baaff) email: (ahmedmedhat.reda@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-08 12:48:25 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): Please confirm your Email first.
+2023-08-08 17:37:25 error:  This User id: (64d26131a61f10b001962acf) email: (admin@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-08 17:40:10 error:  This User id: (64d261d8871ffe3b097bc371) email: (admin@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-08 18:02:09 error:  This User id: (64d266ff871ffe3b097bc375) email: (admin@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-08 18:08:39 error:  This User id: (64d26885dde2c3229ebb4aa9) email: (manager@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-08 18:08:50 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): In-vaild Email OR Password.
+2023-08-08 18:13:13 error:  This User id: (64d2698bba0d85d13c9feeb1) email: (admin@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-08 18:17:54 error:  This User id: (64d26aaf7fe21e4e45933e2c) email: (Hr@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-08 18:18:02 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): In-vaild Email OR Password.
+2023-08-08 18:24:47 error:  This User id: (64d26c4c7fe21e4e45933e39) email: (user@gmail.com) an error occurred While a Sign up confirmation email was being sent.

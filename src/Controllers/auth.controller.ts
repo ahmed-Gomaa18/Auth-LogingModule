@@ -12,22 +12,26 @@ import {
   loginService,
   confirmEmailService,
   resendConfirmEmailService,
-  logoutService ,
+  logoutService,
   generateResetPasswordLinkService,
   resetPasswordService,
   callbackKeycloakURLService,
 } from "../Services/auth.service";
 
-
-
-
-
 export async function Register(req: Request, res: Response) {
   try {
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email, password, role, permissions } =
+      req.body;
 
     // Call Service
-    const result = await registerService(firstName, lastName, email, password);
+    const result = await registerService(
+      firstName,
+      lastName,
+      email,
+      password,
+      role,
+      permissions
+    );
     if (result.isSuccess) {
       // Send Mail
       sendConfirmationMailService(result.user._id, result.user.email, req);
@@ -63,13 +67,11 @@ export async function Login(req: Request, res: Response) {
         { req }
       );
 
-      return res
-        .status(result.status)
-        .json({
-          message: result.message,
-          user: result.user,
-          token: result.Token,
-        });
+      return res.status(result.status).json({
+        message: result.message,
+        user: result.user,
+        token: result.Token,
+      });
     } else {
       Logger.error(`${result.message}`, { req });
 
@@ -167,7 +169,6 @@ export async function Logout(req: Request, res: Response) {
   }
 }
 
-
 export function authenticateByKeycloak(
   req: Request,
   res: Response,
@@ -198,19 +199,17 @@ export async function callbackKeycloakURL(
       `Error Occurred While Authenticating using Keycloak, Error: ${error.message}.`,
       { req }
     );
-    
+
     res.redirect("http://localhost:3001");
 
     // res.status(500).json({ message: "Catch Error" + error.message });
-    
   }
 }
 
-export async function logoutByKeycloak(req: Request, res: Response){
-    const redirectUrl = `${process.env.KEYCLOAK_URL}/realms/${process.env.KEYCLOAK_REALM_NAME}/protocol/openid-connect/logout?client_id=${process.env.KEYCLOAK_CLIENT_ID}`;
-    res.redirect(redirectUrl);
+export async function logoutByKeycloak(req: Request, res: Response) {
+  const redirectUrl = `${process.env.KEYCLOAK_URL}/realms/${process.env.KEYCLOAK_REALM_NAME}/protocol/openid-connect/logout?client_id=${process.env.KEYCLOAK_CLIENT_ID}`;
+  res.redirect(redirectUrl);
 }
-
 
 // Auth By Google
 export function authenticateByGoogle(
@@ -244,7 +243,6 @@ export function callbackGoogleURL(
     res.redirect("http://localhost:3001");
   })(req, res, next);
 }
-
 
 // Auth By Facebook
 export function authenticateByFacebook(
@@ -292,8 +290,11 @@ export async function requestResetPassword(
 
     if (result.isSuccess) {
       // Send Mail
-      const parameters = {'{{url}}': result.link};
-      const message = await readTemplate('resetPasswordLink.template.html', parameters);
+      const parameters = { "{{url}}": result.link };
+      const message = await readTemplate(
+        "resetPasswordLink.template.html",
+        parameters
+      );
 
       sendEmail(email, "Password Reset Request", message, result.user_id);
 
@@ -328,7 +329,9 @@ export async function resetPassword(
     if (result.isSuccess) {
       // Send Mail
 
-      const message = await readTemplate('resetPasswordConfirmation.template.html');
+      const message = await readTemplate(
+        "resetPasswordConfirmation.template.html"
+      );
       sendEmail(
         result.user.email,
         "Password Reset Request",

@@ -15,14 +15,13 @@ import Token from "../Models/tokenResetPassword.model";
 import { calculateExpirationDate } from "../Config/calculateExpirationDate";
 import readTemplate from "../Utils/readTemplate.util";
 
-
-
-
 export async function registerService(
   firstName: string,
   lastName: string,
   email: string,
-  password: string
+  password: string,
+  role: string,
+  permissions: [string]
 ) {
   const hashPassword = await bcrypt.hash(
     password,
@@ -34,6 +33,8 @@ export async function registerService(
     lastName,
     email,
     password: hashPassword,
+    role: role,
+    permissions,
   });
   const savedUser = await newUser.save();
 
@@ -67,8 +68,10 @@ export async function sendConfirmationMailService(
   });
 
   // send Email
-  const parameters = {'{{url}}': `${req.protocol}://${req.headers.host}/api/v1/auth/confirmEmail/${token}`}
-  const message = await readTemplate('activateEmail.template.html', parameters);
+  const parameters = {
+    "{{url}}": `${req.protocol}://${req.headers.host}/api/v1/auth/confirmEmail/${token}`,
+  };
+  const message = await readTemplate("activateEmail.template.html", parameters);
 
   sendEmail(email, "Confirm Your Account.", message, user_id);
 }
@@ -86,93 +89,86 @@ export async function loginService(
       status: 404,
     };
   } else {
-    if (!user.confirm_email) {
+    if (user.isBlocked) {
       return {
         isSuccess: false,
-        message: "Please confirm your Email first.",
+        message: "Your acccount has bloced by Admin.",
         status: 400,
       };
     } else {
-      if (user.isBlocked) {
+      if (user.authByThirdParty) {
         return {
           isSuccess: false,
-          message: "Your acccount has bloced by Admin.",
+          message:
+            "You Can't Login From This Page. Please Reset Your Password. Thanks For Your Time.",
           status: 400,
         };
       } else {
-        if (user.authByThirdParty) {
-          return {
-            isSuccess: false,
-            message:
-              "You Can't Login From This Page. Please Reset Your Password. Thanks For Your Time.",
-            status: 400,
-          };
+        const match = await user.checkPasswordIsValid(password);
+        if (!match) {
+          return await lockUserLogin(user);
         } else {
-          const match = await user.checkPasswordIsValid(password);
-          if (!match) {
-            return await lockUserLogin(user);
-          } else {
-            const result = await unlockLoginTimeFun(user);
-            if (result.isSuccess === false) {
-              return result;
-            }
-            user = result;
+          const result = await unlockLoginTimeFun(user);
+          if (result.isSuccess === false) {
+            return result;
+          }
+          user = result;
 
-            // Check rememberMe
-            let expiresIn = "24h";
-            if (rememberMe) {
-              expiresIn = "7d";
-            }
+          // Check rememberMe
+          let expiresIn = "24h";
+          if (rememberMe) {
+            expiresIn = "7d";
+          }
 
-            // Login Logic Use session Config flag With Not use Session By Default
-            const SESSION_CONFIG =
-              process.env.SESSION_CONFIG || "notUseSessionTable";
+          // Login Logic Use session Config flag With Not use Session By Default
+          const SESSION_CONFIG =
+            process.env.SESSION_CONFIG || "notUseSessionTable";
 
-            if (SESSION_CONFIG == "useSessionTable") {
-              const token_id = uuidv4();
-              const resUserSessionToken = await createUserSession(
-                token_id,
-                user,
-                expiresIn
-              );
+          if (SESSION_CONFIG == "useSessionTable") {
+            const token_id = uuidv4();
+            const resUserSessionToken = await createUserSession(
+              token_id,
+              user,
+              expiresIn
+            );
 
-              if (resUserSessionToken == "Faild") {
-                return {
-                  isSuccess: false,
-                  message:
-                    "Oops, Occurred a problem While login. Please Try Login again.",
-                  status: 401,
-                };
-              }
-
+            if (resUserSessionToken == "Faild") {
               return {
-                isSuccess: true,
-                message: "User Login Successfully.",
-                status: 200,
-                user: user,
-                Token: resUserSessionToken,
-              };
-            } else if (SESSION_CONFIG == "notUseSessionTable") {
-              const TokenJWT = await jwtSign(
-                { id: user._id, role: user.role, permission: user.permission },
-                process.env.TOKEN_SIGNATURE,
-                { expiresIn }
-              );
-
-              return {
-                isSuccess: true,
-                message: "User Login Successfully.",
-                status: 200,
-                user: user,
-                Token: TokenJWT,
+                isSuccess: false,
+                message:
+                  "Oops, Occurred a problem While login. Please Try Login again.",
+                status: 401,
               };
             }
+
+            return {
+              isSuccess: true,
+              message: "User Login Successfully.",
+              status: 20,
+              user: user,
+              Token: resUserSessionToken,
+            };
+          } else if (SESSION_CONFIG == "notUseSessionTable") {
+            const TokenJWT = await jwtSign(
+              { id: user._id, role: user.role, permissions: user.permissions },
+              process.env.TOKEN_SIGNATURE,
+              { expiresIn }
+            );
+
+            return {
+              isSuccess: true,
+              message: "User Login Successfully.",
+              status: 200,
+              user: user,
+              Token: TokenJWT,
+            };
           }
         }
       }
     }
   }
 }
+
 async function getKeyclaokAccessTokenByAuthCode(code: string) {
   const tokenUrl = `${process.env.KEYCLOAK_URL}/realms/${process.env.KEYCLOAK_REALM_NAME}/protocol/openid-connect/token`;
 
@@ -292,8 +288,13 @@ export async function resendConfirmEmailService(req: Request, userId: string) {
       });
 
       // send Email
-      const parameters = {'{{url}}': `${req.protocol}://${req.headers.host}/api/v1/auth/confirmEmail/${token}`}
-      const message = await readTemplate('activateEmail.template.html', parameters);
+      const parameters = {
+        "{{url}}": `${req.protocol}://${req.headers.host}/api/v1/auth/confirmEmail/${token}`,
+      };
+      const message = await readTemplate(
+        "activateEmail.template.html",
+        parameters
+      );
 
       sendEmail(user.email, "Confirm Your Account.", message, user._id);
 
@@ -442,7 +443,7 @@ export async function createUserSession(
     {
       id: user._id,
       role: user.role,
-      permission: user.permission,
+      permission: user.permissions,
       token_id: token_id,
     },
     process.env.TOKEN_SIGNATURE,
@@ -464,11 +465,17 @@ export async function createUserSession(
   }
 }
 
+/*
+3 
+من 2 وربع لى 3 
+3 وخمسة
+* */
 async function lockUserLogin(user) {
   user.failedLoginAttempts++;
   await user.save();
   if (user.failedLoginAttempts >= Number(process.env.MAX_LOGIN_ATTEMPTS)) {
     if (user.unlockLoginTime && Date.now() > user.unlockLoginTime) {
+      // lock 2 2:4   3
       user.failedLoginAttempts = 1;
       user.unlockLoginTime = undefined;
       await user.save();
@@ -525,3 +532,12 @@ async function unlockLoginTimeFun(user) {
 
   return user;
 }
+
+/**
+  get search getid delete update post updateimage 
+  
+  mnager -> manage all
+  admin post get search update  "permissions":["create:user" , "read:user", "search:user", "update:user" ]
+  hr updateimage delete        "permissions": ["updateimage:user", "delete:user" ]
+  user => getid  ['readID','user']
+ */
