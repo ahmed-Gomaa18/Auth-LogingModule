@@ -234,7 +234,7 @@ export async function loginService(
 
               // Get Access Code 
               let data = await axios.get(`http://localhost:8080/api/v1/assets/getAccessCodesV2?role=${user.role}`);
-              console.log(data)
+              
               const resUserSessionToken = await createUserSessionV2(
                 token_id,
                 user,
@@ -263,7 +263,7 @@ export async function loginService(
               // Get Access Code 
               let data = await axios.get(`http://localhost:8080/api/v1/assets/getAccessCodesV2?role=${user.role}`);
               
-              console.log(data);
+            
               
               const TokenJWT = await jwtSign(
                 { id: user._id, role: user.role, permission: user.permission, accessCodes:data.data.result },
