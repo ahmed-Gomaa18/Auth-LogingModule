@@ -41,7 +41,7 @@ const userSchema: Schema<UserInterface> = new mongoose.Schema({
         type: String, 
         default: 'User', 
         required: true, 
-        enum: ['Admin', 'User']
+        enum: ['admin', 'user', 'projectManager','departmentManager']
     },
     permission: [
         { 
