@@ -39,7 +39,7 @@ const userSchema: Schema<UserInterface> = new mongoose.Schema({
     },
     role: {
         type: String, 
-        default: 'User', 
+        default: 'projectManager', 
         required: true, 
         enum: ['admin', 'user', 'projectManager','departmentManager']
     },

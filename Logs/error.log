@@ -411,3 +411,5 @@ Error(Request failed with status code 400)
 2023-08-07 16:22:30 error:  This User id: (64d0fe1929b7d0251cf0bd43) email: (ahmedmedhat.reda@gmail.com) an error occurred While a Sign up confirmation email was being sent.
 2023-08-07 16:38:06 error:  This User id: (64d101c37c5046cfd6ace8fc) email: (ahmedmedhat.reda@gmail.com) an error occurred While a Sign up confirmation email was being sent.
 2023-08-07 16:40:11 error:  This User id: (64d10248afc91a448a4baaff) email: (ahmedmedhat.reda@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-09 11:08:31 error:  This User id: (64d349755a5625ac316863e0) email: (ahmedgomaa8998@gmail.com) an error occurred While a Sign up confirmation email was being sent.
+2023-08-09 13:07:26 error: @Method:(post) @Endpoint:(/login) @FunctionName:(Login): Error Occurred While This User Try to LogIn email:(ahmedgomaa8998@gmail.com) Error: Unsupported protocol localhost:.

@@ -40,7 +40,7 @@ export async function registerService(
   if (!savedUser) {
     return {
       isSuccess: false,
-      message: "Sorry, Please try to signup agian",
+      message: "Sorry, Please try to signup again",
       status: 405,
       user: savedUser,
     };
@@ -73,6 +73,108 @@ export async function sendConfirmationMailService(
   sendEmail(email, "Confirm Your Account.", message, user_id);
 }
 
+// export async function loginService(
+//   email: string,
+//   password: string,
+//   rememberMe: boolean
+// ) {
+//   let user = await User.findOne({ email });
+//   if (!user) {
+//     return {
+//       isSuccess: false,
+//       message: "In-vaild Email OR Password.",
+//       status: 404,
+//     };
+//   } else {
+//     if (!user.confirm_email) {
+//       return {
+//         isSuccess: false,
+//         message: "Please confirm your Email first.",
+//         status: 400,
+//       };
+//     } else {
+//       if (user.isBlocked) {
+//         return {
+//           isSuccess: false,
+//           message: "Your acccount has bloced by Admin.",
+//           status: 400,
+//         };
+//       } else {
+//         if (user.authByThirdParty) {
+//           return {
+//             isSuccess: false,
+//             message:
+//               "You Can't Login From This Page. Please Reset Your Password. Thanks For Your Time.",
+//             status: 400,
+//           };
+//         } else {
+//           const match = await user.checkPasswordIsValid(password);
+//           if (!match) {
+//             return await lockUserLogin(user);
+//           } else {
+//             const result = await unlockLoginTimeFun(user);
+//             if (result.isSuccess === false) {
+//               return result;
+//             }
+//             user = result;
+
+//             // Check rememberMe
+//             let expiresIn = "24h";
+//             if (rememberMe) {
+//               expiresIn = "7d";
+//             }
+
+//             // Login Logic Use session Config flag With Not use Session By Default
+//             const SESSION_CONFIG =
+//               process.env.SESSION_CONFIG || "notUseSessionTable";
+
+//             if (SESSION_CONFIG == "useSessionTable") {
+//               const token_id = uuidv4();
+//               const resUserSessionToken = await createUserSession(
+//                 token_id,
+//                 user,
+//                 expiresIn
+//               );
+
+//               if (resUserSessionToken == "Faild") {
+//                 return {
+//                   isSuccess: false,
+//                   message:
+//                     "Oops, Occurred a problem While login. Please Try Login again.",
+//                   status: 401,
+//                 };
+//               }
+
+//               return {
+//                 isSuccess: true,
+//                 message: "User Login Successfully.",
+//                 status: 200,
+//                 user: user,
+//                 Token: resUserSessionToken,
+//               };
+//             } else if (SESSION_CONFIG == "notUseSessionTable") {  
+//               const TokenJWT = await jwtSign(
+//                 { id: user._id, role: user.role, permission: user.permission },
+//                 process.env.TOKEN_SIGNATURE,
+//                 { expiresIn }
+//               );
+
+//               return {
+//                 isSuccess: true,
+//                 message: "User Login Successfully.",
+//                 status: 200,
+//                 user: user,
+//                 Token: TokenJWT,
+//               };
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// Add accessCode 
 export async function loginService(
   email: string,
   password: string,
@@ -127,13 +229,17 @@ export async function loginService(
             // Login Logic Use session Config flag With Not use Session By Default
             const SESSION_CONFIG =
               process.env.SESSION_CONFIG || "notUseSessionTable";
-
             if (SESSION_CONFIG == "useSessionTable") {
               const token_id = uuidv4();
-              const resUserSessionToken = await createUserSession(
+
+              // Get Access Code 
+              let data = await axios.get(`http://localhost:8080/api/v1/assets/getAccessCodesV2?role=${user.role}`);
+              console.log(data)
+              const resUserSessionToken = await createUserSessionV2(
                 token_id,
                 user,
-                expiresIn
+                expiresIn,
+                data.data.result
               );
 
               if (resUserSessionToken == "Faild") {
@@ -152,9 +258,15 @@ export async function loginService(
                 user: user,
                 Token: resUserSessionToken,
               };
-            } else if (SESSION_CONFIG == "notUseSessionTable") {
+            } else if (SESSION_CONFIG == "notUseSessionTable") {  
+              
+              // Get Access Code 
+              let data = await axios.get(`http://localhost:8080/api/v1/assets/getAccessCodesV2?role=${user.role}`);
+              
+              console.log(data);
+              
               const TokenJWT = await jwtSign(
-                { id: user._id, role: user.role, permission: user.permission },
+                { id: user._id, role: user.role, permission: user.permission, accessCodes:data.data.result },
                 process.env.TOKEN_SIGNATURE,
                 { expiresIn }
               );
@@ -448,6 +560,39 @@ export async function createUserSession(
     process.env.TOKEN_SIGNATURE,
     { expiresIn }
   );
+  const expire_date = calculateExpirationDate(expiresIn);
+
+  const newUserSession = new UserSession({
+    user_id: user._id,
+    token_id: token_id,
+    expire_date: expire_date,
+  });
+  const savedUserSession = await newUserSession.save();
+  if (!savedUserSession) {
+    return "Faild";
+  } else {
+    return token;
+  }
+}
+
+  // Add Access Codes
+  async function createUserSessionV2(
+    token_id: string,
+    user: UserInterface,
+    expiresIn: string,
+    accessCodes: string []
+  ): Promise<string> {
+    const token: string = await jwtSign(
+      {
+        id: user._id,
+        role: user.role,
+        permission: user.permission,
+        token_id: token_id,
+        accessCodes: accessCodes
+      },
+      process.env.TOKEN_SIGNATURE,
+      { expiresIn }
+    );
 
   const expire_date = calculateExpirationDate(expiresIn);
 
