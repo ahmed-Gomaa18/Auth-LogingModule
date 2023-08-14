@@ -75,5 +75,5 @@ app.use((req: Request, res: Response) => {
 app.use(defaultErrorHandler);
 
 server.listen(PORT, ()=>{
-    console.log("Server Running on http://localhost:"+PORT);
+    console.log("Server Running on http://localhost:" + PORT);
 })
